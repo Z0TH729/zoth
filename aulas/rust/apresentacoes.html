@@ -33,34 +33,7 @@
     <main class="container">
         <div class="label">MATERIAL DE ESTUDO</div>
         <div class="heading"><span class="crab">🦀</span><h1>Apresentações<span>.</span></h1></div>
-        <p class="description">Antes de escrever código, precisamos compreender a linguagem que estamos utilizando, suas propostas e os mecanismos que fazem Rust funcionar.</p>
-        <section class="content">
-            <article class="topic"><h2><span>01.</span> O que é Rust?</h2><p>Rust é uma linguagem de programação de sistemas, compilada e multiparadigma. Ela foi projetada para oferecer alto desempenho e segurança de memória.</p><p>Diferentemente de linguagens que dependem de um coletor de lixo tradicional, Rust utiliza um conjunto de regras conhecido como <strong>Ownership</strong> para controlar a memória.</p></article>
-            <article class="topic"><h2><span>02.</span> Por que Rust foi criada?</h2><p>Muitos sistemas precisam de controle direto sobre memória e recursos computacionais. Linguagens como C e C++ oferecem esse controle, mas permitem erros difíceis de detectar.</p><p>Rust procura combinar controle de baixo nível com garantias de segurança verificadas durante a compilação.</p><p>Seus principais objetivos incluem:</p><p>• Desempenho próximo ao de linguagens de baixo nível.<br>• Segurança de memória em código Rust seguro.<br>• Concorrência com garantias de segurança.<br>• Controle explícito sobre recursos.</p></article>
-            <article class="topic"><h2><span>03.</span> Linguagem compilada</h2><p>Rust é uma linguagem compilada. O código-fonte passa por um processo de compilação antes de ser executado como um programa nativo. O compilador verifica o código e identifica diversos problemas antes de produzir o executável.</p><div class="terminal"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-name">zoth@rust: ~</span><button class="terminal-copy" onclick="copiarTerminal(this)">COPIAR</button></div><div class="terminal-body"><pre><span class="prompt">zoth@rust:~$</span> rustc main.rs
-
-<span class="output">Compilação concluída.
-Executável gerado: main</span>
-
-<span class="prompt">zoth@rust:~$</span> ./main
-
-<span class="output">Programa executado.</span></pre></div></div></article>
-            <article class="topic"><h2><span>04.</span> O compilador Rust</h2><p>O compilador oficial da linguagem é chamado <strong>rustc</strong>. Ele transforma o código Rust em código executável para a plataforma de destino e verifica regras importantes, incluindo tipos, ownership e empréstimos.</p><div class="terminal"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-name">zoth@rust: ~</span><button class="terminal-copy" onclick="copiarTerminal(this)">COPIAR</button></div><div class="terminal-body"><pre><span class="prompt">zoth@rust:~$</span> rustc main.rs</pre></div></div><p>Esse comando solicita ao compilador que compile o arquivo <strong>main.rs</strong>.</p></article>
-            <article class="topic"><h2><span>05.</span> Cargo</h2><p>Cargo é o gerenciador de pacotes e ferramenta de construção oficial do ecossistema Rust. Ele permite criar projetos, compilar programas, executar testes e administrar dependências.</p><div class="terminal"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span class="terminal-name">zoth@rust: ~/Projetos</span><button class="terminal-copy" onclick="copiarTerminal(this)">COPIAR</button></div><div class="terminal-body"><pre><span class="prompt">zoth@rust:~/Projetos$</span> cargo new meu_projeto
-
-<span class="output">Creating binary (application) `meu_projeto` package</span>
-
-<span class="prompt">zoth@rust:~/Projetos$</span> cd meu_projeto
-
-<span class="prompt">zoth@rust:~/Projetos/meu_projeto$</span> cargo run
-
-<span class="output">Compiling meu_projeto v0.1.0
-Finished dev profile
-Running target/debug/meu_projeto</span></pre></div></div><p>O Cargo automatiza várias tarefas que, de outra forma, precisariam ser realizadas manualmente.</p></article>
-            <article class="topic"><h2><span>06.</span> Ownership</h2><p>Ownership é um dos conceitos centrais de Rust. Ele define quem é responsável por um valor e controla por quanto tempo esse valor permanece válido. Esse sistema trabalha em conjunto com empréstimos (borrowing) e tempos de vida (lifetimes).</p><div class="note"><strong class="highlight">Importante:</strong> ownership não é um coletor de lixo. É um conjunto de regras aplicado pelo compilador para controlar a memória.</div></article>
-            <article class="topic"><h2><span>07.</span> Onde Rust é utilizada?</h2><p>Rust pode ser utilizada em diferentes áreas da computação, principalmente onde desempenho e controle de recursos são importantes.</p><p>• Ferramentas de sistema.<br>• Sistemas operacionais.<br>• Aplicações de linha de comando.<br>• Desenvolvimento de servidores.<br>• Sistemas embarcados.<br>• Componentes de infraestrutura.</p></article>
-            <article class="topic"><h2><span>08.</span> Nosso objetivo</h2><p>O objetivo deste estudo é compreender Rust desde seus fundamentos até o desenvolvimento de aplicações reais.</p><p>Não vamos apenas memorizar sintaxe. Vamos estudar tipos, memória, lógica, estruturas de dados, compilação e interação com o sistema operacional.</p></article>
-        </section>
+        <section class="content" aria-label="Conteúdo das apresentações"></section>
         <div class="navigation"><a href="index.html">← VOLTAR AO RUST</a><a href="../../aulas.html">VOLTAR ÀS AULAS →</a></div>
     </main>
     <footer><div class="container">ZOTH © 2026</div></footer>
