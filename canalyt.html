@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#080808">
     <meta name="description" content="Canal ZOTH no YouTube.">
     <title>Canal | ZOTH</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,41 +12,41 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth}
-        body{min-height:100vh;overflow-x:hidden;background:#fff;color:#111;font-family:'Space Grotesk',sans-serif;opacity:0;animation:pageIn .7s ease forwards}
-        body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");opacity:.055}
+        body{min-height:100vh;overflow-x:hidden;background:#080808;color:#f5f5f5;font-family:'Space Grotesk',sans-serif;opacity:0;animation:pageIn .7s ease forwards}
+        body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");opacity:.16}
         a{color:inherit}
-        .topbar{width:min(1180px,calc(100% - 44px));height:74px;margin:auto;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e5e5e5}
+        .topbar{width:min(1180px,calc(100% - 44px));height:74px;margin:auto;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #242424}
         .brand{text-decoration:none;font-size:20px;font-weight:700;letter-spacing:5px}
-        .brand span{color:#666}
+        .brand span{color:#aaa}
         .top-actions{display:flex;align-items:center;gap:22px}
-        .top-actions a{color:#666;text-decoration:none;font-size:12px;transition:color .2s}
-        .top-actions a:hover{color:#000}
-        .youtube-link{padding:10px 15px;border:1px solid #ccc;border-radius:5px;color:#111!important}
+        .top-actions a{color:#aaa;text-decoration:none;font-size:12px;transition:color .2s}
+        .top-actions a:hover{color:#fff}
+        .youtube-link{padding:10px 15px;border:1px solid #454545;border-radius:5px;color:#fff!important}
         main{width:min(1120px,calc(100% - 44px));margin:34px auto 90px}
-        .channel-banner{height:clamp(150px,24vw,270px);position:relative;overflow:hidden;border:1px solid #e2e2e2;border-radius:12px;background:linear-gradient(115deg,#f4f4f4,#fff 55%,#e9e9e9)}
-        .channel-banner::before{content:"Z";position:absolute;right:8%;top:-.48em;color:rgba(0,0,0,.045);font-size:clamp(250px,38vw,430px);font-weight:700;line-height:1}
-        .channel-banner::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 34px,rgba(0,0,0,.045) 35px 36px);mask-image:linear-gradient(90deg,transparent,#000);pointer-events:none}
-        .banner-label{position:absolute;left:24px;bottom:20px;z-index:1;color:rgba(0,0,0,.48);font:10px 'Fira Code',monospace;letter-spacing:3px}
-        .channel-head{display:flex;align-items:center;gap:24px;padding:26px 8px 28px;border-bottom:1px solid #e5e5e5}
-        .avatar{width:112px;height:112px;flex:0 0 auto;overflow:hidden;border:2px solid #222;border-radius:50%;background:#eee}
+        .channel-banner{height:clamp(150px,24vw,270px);position:relative;overflow:hidden;border:1px solid #292929;border-radius:12px;background:linear-gradient(115deg,#171717,#090909 55%,#202020)}
+        .channel-banner::before{content:"Z";position:absolute;right:8%;top:-.48em;color:rgba(255,255,255,.055);font-size:clamp(250px,38vw,430px);font-weight:700;line-height:1}
+        .channel-banner::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 34px,rgba(255,255,255,.035) 35px 36px);mask-image:linear-gradient(90deg,transparent,#000);pointer-events:none}
+        .banner-label{position:absolute;left:24px;bottom:20px;z-index:1;color:rgba(255,255,255,.55);font:10px 'Fira Code',monospace;letter-spacing:3px}
+        .channel-head{display:flex;align-items:center;gap:24px;padding:26px 8px 28px;border-bottom:1px solid #242424}
+        .avatar{width:112px;height:112px;flex:0 0 auto;overflow:hidden;border:2px solid #ddd;border-radius:50%;background:#171717}
         .avatar img{width:100%;height:100%;display:block;object-fit:cover}
         .channel-info{min-width:0;flex:1}
         .channel-info h1{font-size:clamp(25px,4vw,38px);font-weight:600;letter-spacing:-1.2px}
-        .handle{margin-top:6px;color:#666;font:12px 'Fira Code',monospace}
+        .handle{margin-top:6px;color:#aaa;font:12px 'Fira Code',monospace}
         .channel-description{margin-top:12px;color:#999;font-size:13px;line-height:1.7}
-        .subscribe{display:inline-flex;align-items:center;justify-content:center;margin-top:15px;padding:11px 18px;border-radius:4px;background:#111;color:#fff;text-decoration:none;font-size:12px;font-weight:700;transition:background .2s,transform .2s}
-        .subscribe:hover{background:#333;transform:translateY(-2px)}
-        .tabs{display:flex;gap:30px;overflow-x:auto;border-bottom:1px solid #e5e5e5}
-        .tabs a{padding:17px 2px 14px;color:#666;text-decoration:none;white-space:nowrap;font-size:12px}
-        .tabs a.active{color:#111;border-bottom:2px solid #111}
+        .subscribe{display:inline-flex;align-items:center;justify-content:center;margin-top:15px;padding:11px 18px;border-radius:4px;background:#f2f2f2;color:#080808;text-decoration:none;font-size:12px;font-weight:700;transition:background .2s,transform .2s}
+        .subscribe:hover{background:#fff;transform:translateY(-2px)}
+        .tabs{display:flex;gap:30px;overflow-x:auto;border-bottom:1px solid #242424}
+        .tabs a{padding:17px 2px 14px;color:#888;text-decoration:none;white-space:nowrap;font-size:12px}
+        .tabs a.active{color:#fff;border-bottom:2px solid #f5f5f5}
         .section-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:34px 0 18px}
         .section-head h2{font-size:18px;font-weight:500}
-        .section-head span{color:#666;font:10px 'Fira Code',monospace;letter-spacing:1px}
-        .empty{min-height:210px;display:grid;place-items:center;padding:35px 20px;border:1px solid #e5e5e5;border-radius:9px;background:rgba(250,250,250,.8);text-align:center}
-        .empty-mark{width:48px;height:48px;margin:0 auto 15px;display:grid;place-items:center;border:1px solid #bbb;border-radius:50%;color:#111;font-size:19px}
+        .section-head span{color:#777;font:10px 'Fira Code',monospace;letter-spacing:1px}
+        .empty{min-height:210px;display:grid;place-items:center;padding:35px 20px;border:1px solid #242424;border-radius:9px;background:rgba(15,15,15,.65);text-align:center}
+        .empty-mark{width:48px;height:48px;margin:0 auto 15px;display:grid;place-items:center;border:1px solid #555;border-radius:50%;color:#eee;font-size:19px}
         .empty h3{font-size:15px;font-weight:500}
-        .empty p{margin-top:7px;color:#666;font-size:12px;line-height:1.7}
-        footer{width:min(1120px,calc(100% - 44px));margin:0 auto;padding:22px 0 30px;border-top:1px solid #e5e5e5;color:#777;font:10px 'Fira Code',monospace;letter-spacing:1px;text-align:center}
+        .empty p{margin-top:7px;color:#777;font-size:12px;line-height:1.7}
+        footer{width:min(1120px,calc(100% - 44px));margin:0 auto;padding:22px 0 30px;border-top:1px solid #222;color:#666;font:10px 'Fira Code',monospace;letter-spacing:1px;text-align:center}
         @keyframes pageIn{to{opacity:1}}
         @media(max-width:650px){
             .topbar{height:66px}.top-actions{gap:12px}.top-actions a:first-child{display:none}
@@ -79,7 +79,6 @@
                 <h1>ZOTH</h1>
                 <div class="handle">@Z0TH729</div>
                 <p class="channel-description">Canal oficial do projeto ZOTH.</p>
-                <a class="subscribe" href="https://www.youtube.com/@Z0TH729" target="_blank" rel="noopener noreferrer">VISITAR CANAL</a>
             </div>
         </section>
 
@@ -99,7 +98,6 @@
                     <div class="empty-mark">▶</div>
                     <h3>Explore o canal ZOTH</h3>
                     <p>Os vídeos e publicações podem ser acessados diretamente pelo canal oficial.</p>
-                    <a class="subscribe" href="https://www.youtube.com/@Z0TH729/videos" target="_blank" rel="noopener noreferrer">VER VÍDEOS</a>
                 </div>
             </div>
         </section>
