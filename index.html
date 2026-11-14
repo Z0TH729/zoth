@@ -59,15 +59,28 @@
         .hero h1 span { color: #d71920; }
         .hero p {
             margin-top: 18px;
-            color: #777;
-            font-size: 12px;
-            letter-spacing: 1px;
-            line-height: 1.8;
-            text-align: left;
+            color: #aaa;
+            font-size: 14px;
+            letter-spacing: .3px;
+            line-height: 1.9;
+            text-align: center;
             width: min(760px, 100%);
-            align-self: flex-start;
+            font-style: italic;
             opacity: 0;
             animation: fadeUp 1s ease 1s forwards;
+        }
+        .quote-portrait {
+            width: 92px;
+            height: 92px;
+            margin-top: 28px;
+            border: 1px solid #d71920;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 24%;
+            filter: grayscale(100%);
+            box-shadow: 0 0 24px rgba(215,25,32,.12);
+            opacity: 0;
+            animation: fadeUp 1s ease .8s forwards;
         }
         .hero .attribution {
             display: block;
@@ -75,7 +88,8 @@
             color: #aaa;
             font-size: 11px;
             letter-spacing: 1px;
-            padding-left: 2em;
+            padding-left: 0;
+            font-style: normal;
         }
         .hero .attribution strong { color: #f2f2f2; font-weight: 500; }
         .line {
@@ -266,8 +280,8 @@
         .boot-slogan {
             margin-top: 5px;
             color: #777;
-            font: 10px/2 'Fira Code', monospace;
-            letter-spacing: 1px;
+            font: italic 10px/2 'Fira Code', monospace;
+            letter-spacing: .3px;
             opacity: 0;
             animation: bootReveal .6s ease 5.15s forwards;
         }
@@ -347,6 +361,7 @@
     <main>
         <section class="hero">
             <h1>ZOTH<span>.</span></h1>
+            <img class="quote-portrait" src="https://upload.wikimedia.org/wikipedia/commons/5/55/Grace_Hopper.jpg" alt="Retrato de Grace Hopper, pioneira da computação">
             <p>Para mim, programar é mais do que uma arte prática importante. É também um empreendimento gigantesco nos fundamentos do conhecimento.<span class="attribution">- <strong>Grace Hopper.</strong></span></p>
             <div class="line"></div>
         </section>
