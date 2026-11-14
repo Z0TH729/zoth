@@ -204,6 +204,63 @@
             letter-spacing: 2px;
         }
 
+        /* Inicialização estilo Linux */
+        .boot-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+            background: #050505;
+            color: #c9c9c9;
+            font: 12px/2 'Fira Code', monospace;
+            animation: bootExit .8s ease 5.9s forwards;
+        }
+        .boot-content { width: min(100%, 760px); }
+        .boot-line { opacity: 0; animation: bootLine .25s ease forwards; }
+        .boot-line:nth-child(1) { animation-delay: .2s; }
+        .boot-line:nth-child(2) { animation-delay: .55s; }
+        .boot-line:nth-child(3) { animation-delay: .9s; }
+        .boot-line:nth-child(4) { animation-delay: 1.25s; }
+        .boot-line:nth-child(5) { animation-delay: 1.6s; }
+        .boot-line:nth-child(6) { animation-delay: 1.95s; }
+        .boot-line:nth-child(7) { animation-delay: 2.3s; }
+        .boot-line:nth-child(8) { animation-delay: 2.65s; }
+        .boot-ok { color: #70c98a; }
+        .boot-muted { color: #666; }
+        .boot-terminal {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid #292929;
+            opacity: 0;
+            animation: bootReveal .6s ease 3.35s forwards;
+        }
+        .boot-prompt { color: #d71920; }
+        .boot-logo {
+            margin-top: 14px;
+            color: #f2f2f2;
+            font: 700 42px 'Space Grotesk', sans-serif;
+            letter-spacing: 9px;
+            opacity: 0;
+            animation: bootReveal .7s ease 4.8s forwards;
+        }
+        .boot-logo span { color: #d71920; }
+        .boot-slogan {
+            margin-top: 5px;
+            color: #777;
+            font: 10px/2 'Fira Code', monospace;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: bootReveal .6s ease 5.15s forwards;
+        }
+        @keyframes bootLine { to { opacity: 1; } }
+        @keyframes bootReveal { to { opacity: 1; } }
+        @keyframes bootExit {
+            to { opacity: 0; visibility: hidden; pointer-events: none; }
+        }
+
         @keyframes pageEnter { to { opacity: 1; } }
         @keyframes titleEnter {
             from { opacity: 0; transform: translateY(35px); filter: blur(8px); }
@@ -232,6 +289,8 @@
             .terminal-title { font-size: 10px; }
         }
         @media (prefers-reduced-motion: reduce) {
+            .boot-screen { display: none; animation: none; }
+
             *, *::before, *::after {
                 animation-duration: .01ms !important;
                 animation-delay: 0ms !important;
@@ -246,6 +305,24 @@
 </head>
 
 <body>
+    <div class="boot-screen" role="status" aria-label="Inicializando o ambiente ZOTH">
+        <div class="boot-content">
+            <div class="boot-line"><span class="boot-muted">[ OK ]</span> Initializing ZOTH environment...</div>
+            <div class="boot-line"><span class="boot-muted">[ OK ]</span> Loading system components</div>
+            <div class="boot-line"><span class="boot-muted">[ OK ]</span> Checking network services</div>
+            <div class="boot-line"><span class="boot-muted">[ OK ]</span> Preparing user environment</div>
+            <div class="boot-line"><span class="boot-muted">[ OK ]</span> Starting terminal interface</div>
+            <div class="boot-line"><span class="boot-ok">[ OK ]</span> All services initialized</div>
+            <div class="boot-line"><span class="boot-muted">[ OK ]</span> Mounting /home/zoth</div>
+            <div class="boot-line"><span class="boot-ok">[ OK ]</span> System ready.</div>
+            <div class="boot-terminal">
+                <div><span class="boot-prompt">zoth@localhost</span>:<span style="color:#6b9ed6">~</span>$ ./start-zoth.sh</div>
+                <div class="boot-muted" style="font-size:10px;margin-top:7px">Starting personal environment...</div>
+                <div class="boot-logo">ZOTH<span>.</span></div>
+                <div class="boot-slogan">O MUNDO NÃO SE OFERECE PRONTO. É PRECISO INTERROGÁ-LO.</div>
+            </div>
+        </div>
+    </div>
     <header class="topbar"><a class="brand" href="index.html">ZOTH<span>.</span></a><nav aria-label="Navegação principal"><a href="projetos.html">Projetos</a><a href="apoiadores.html">Apoiadores</a><a href="blog.html">Blog</a><a href="aulas.html">Aulas</a></nav></header>
 
     <main>
