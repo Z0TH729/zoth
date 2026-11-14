@@ -121,8 +121,40 @@
             content: "";
             position: absolute;
             inset: 0;
+            z-index: 2;
             background: repeating-linear-gradient(135deg, transparent 0 28px, rgba(255,255,255,.025) 29px 30px);
             mask-image: linear-gradient(90deg, transparent, #000);
+            pointer-events: none;
+        }
+        /* Rede gráfica abstrata, construída apenas com CSS */
+        .cover-graph {
+            position: absolute;
+            z-index: 1;
+            inset: 0;
+            opacity: .72;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle, rgba(235,45,52,.95) 0 2px, transparent 3px),
+                radial-gradient(circle, rgba(235,45,52,.72) 0 2px, transparent 3px),
+                radial-gradient(circle, rgba(235,45,52,.8) 0 2px, transparent 3px),
+                radial-gradient(circle, rgba(235,45,52,.65) 0 2px, transparent 3px),
+                radial-gradient(circle, rgba(235,45,52,.85) 0 2px, transparent 3px),
+                linear-gradient(24deg, transparent 49.75%, rgba(215,25,32,.34) 49.9% 50.1%, transparent 50.25%),
+                linear-gradient(153deg, transparent 49.7%, rgba(215,25,32,.25) 49.9% 50.1%, transparent 50.3%),
+                linear-gradient(72deg, transparent 49.8%, rgba(215,25,32,.25) 49.9% 50.1%, transparent 50.2%),
+                linear-gradient(116deg, transparent 49.8%, rgba(215,25,32,.2) 49.9% 50.1%, transparent 50.2%);
+            background-size:
+                100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
+                100% 100%, 100% 100%, 100% 100%, 100% 100%;
+            background-position:
+                13% 30%, 34% 72%, 54% 24%, 76% 64%, 91% 19%,
+                center, center, center, center;
+            background-repeat: no-repeat;
+            animation: graphDrift 18s ease-in-out infinite alternate;
+        }
+        @keyframes graphDrift {
+            from { transform: translate3d(-5px, 2px, 0); opacity: .48; }
+            to { transform: translate3d(5px, -2px, 0); opacity: .78; }
         }
         .community-info {
             position: relative;
@@ -438,7 +470,7 @@
         </section>
 
         <section class="community-card" aria-labelledby="community-title">
-            <div class="cover"></div>
+            <div class="cover"><span class="cover-graph" aria-hidden="true"></span></div>
             <div class="community-info">
                 <div class="community-mark"><img src="assets/comunidadeperfil.jpeg" alt="Imagem de perfil da Comunidade ZOTH"></div>
                 <div class="community-copy">
