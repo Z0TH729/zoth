@@ -1,318 +1,353 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080808">
-<title>ZOTH</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+    <title>ZOTH</title>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-html {
-    scroll-behavior: smooth;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    min-height: 100vh;
-    background: #080808;
-    color: #f2f2f2;
-    font-family: 'Space Grotesk', sans-serif;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
+        body {
+            min-height: 100vh;
+            background: #080808;
+            color: #f2f2f2;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            opacity: 0;
+            animation: pageEnter 1s ease forwards;
+        }
 
-    background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+        /* Grade de fundo */
 
-    background-size: 70px 70px;
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+            background-size: 55px 55px;
+            pointer-events: none;
+            z-index: -1;
+        }
 
-    mask-image: radial-gradient(ellipse, black, transparent 80%);
-}
+        /* Menu */
 
-/* NAVEGAÇÃO */
+        nav {
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 35px;
+            z-index: 10;
+        }
 
-nav {
-    position: absolute;
-    top: 35px;
-    left: 50%;
-    transform: translateX(-50%);
+        nav a {
+            color: #777;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: color .3s;
+        }
 
-    display: flex;
-    gap: 35px;
-}
+        nav a:hover {
+            color: #d71920;
+        }
 
-nav a {
-    color: #777;
-    text-decoration: none;
-    font-size: 11px;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    transition: .3s;
-}
+        /* Início */
 
-nav a:hover {
-    color: #d71920;
-}
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+        }
 
-/* INÍCIO */
+        .hero h1 {
+            font-size: clamp(65px, 12vw, 130px);
+            font-weight: 600;
+            letter-spacing: .28em;
+            padding-left: .28em;
+            opacity: 0;
+            animation: titleEnter 1.3s cubic-bezier(.16, 1, .3, 1) .3s forwards;
+        }
 
-.hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+        .hero h1 span {
+            color: #d71920;
+        }
 
-.hero-content {
-    animation: appear 1.5s ease both;
-}
+        .hero p {
+            margin-top: 18px;
+            color: #777;
+            font-size: 12px;
+            letter-spacing: 4px;
+            opacity: 0;
+            animation: fadeUp 1s ease 1s forwards;
+        }
 
-h1 {
-    font-size: clamp(65px, 13vw, 130px);
-    font-weight: 600;
-    letter-spacing: .28em;
-    padding-left: .28em;
-    line-height: 1;
-}
+        .line {
+            width: 35px;
+            height: 2px;
+            background: #d71920;
+            margin-top: 35px;
+            transform: scaleX(0);
+            animation: lineEnter .7s ease 1.2s forwards;
+        }
 
-h1 span {
-    color: #d71920;
-}
+        /* Sobre */
 
-.line {
-    width: 35px;
-    height: 2px;
-    background: #d71920;
-    margin: 35px auto 25px;
-}
+        .about {
+            min-height: 65vh;
+            padding: 100px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-top: 1px solid #181818;
+        }
 
-.tagline {
-    color: #777;
-    font-size: 11px;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-}
+        .about h2 {
+            color: #d71920;
+            font-size: 13px;
+            letter-spacing: 4px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
 
-/* SOBRE */
+        .about p {
+            max-width: 500px;
+            color: #777;
+            font-size: 14px;
+            line-height: 2;
+        }
 
-.about {
-    min-height: 65vh;
-    padding: 100px 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid #1b1b1b;
-}
+        /* Rodapé */
 
-.about-content {
-    width: min(650px, 100%);
-}
+        footer {
+            padding: 25px;
+            text-align: center;
+            color: #444;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
 
-.about h2 {
-    font-size: 13px;
-    font-weight: 400;
-    color: #d71920;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-}
+        /* Música */
 
-.about p {
-    color: #888;
-    font-size: 15px;
-    line-height: 2;
-}
+        #musicButton {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: transparent;
+            border: 1px solid #333;
+            color: #888;
+            padding: 10px 15px;
+            font-family: inherit;
+            font-size: 11px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: .3s;
+            z-index: 20;
+        }
 
-/* RODAPÉ */
+        #musicButton:hover {
+            border-color: #d71920;
+            color: #fff;
+        }
 
-footer {
-    padding: 25px;
-    border-top: 1px solid #1b1b1b;
-    text-align: center;
-    color: #555;
-    font-size: 10px;
-    letter-spacing: .15em;
-}
+        /* Animações */
 
-/* MÚSICA */
+        @keyframes pageEnter {
+            to {
+                opacity: 1;
+            }
+        }
 
-.music-toggle {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 5;
+        @keyframes titleEnter {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+                filter: blur(8px);
+            }
 
-    background: #080808;
-    border: 1px solid #292929;
-    color: #888;
-    padding: 12px 16px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
 
-    font-family: inherit;
-    font-size: 10px;
-    letter-spacing: .15em;
-    cursor: pointer;
-    transition: .3s;
-}
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
 
-.music-toggle:hover,
-.music-toggle.playing {
-    border-color: #d71920;
-    color: #f2f2f2;
-}
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.music-toggle span {
-    color: #d71920;
-    margin-right: 8px;
-}
+        @keyframes lineEnter {
+            to {
+                transform: scaleX(1);
+            }
+        }
 
-/* ANIMAÇÃO */
+        /* Acessibilidade */
 
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-delay: 0ms !important;
+                scroll-behavior: auto !important;
+            }
 
-@media(max-width: 500px) {
-    nav {
-        gap: 22px;
-        top: 28px;
-    }
+            body,
+            .hero h1,
+            .hero p {
+                opacity: 1;
+            }
 
-    h1 {
-        font-size: 58px;
-        letter-spacing: .2em;
-        padding-left: .2em;
-    }
+            .line {
+                transform: scaleX(1);
+            }
+        }
 
-    .music-toggle {
-        bottom: 20px;
-        right: 20px;
-    }
-}
+        @media (max-width: 480px) {
+            nav {
+                gap: 20px;
+                top: 25px;
+            }
 
-@media(prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-    }
-}
-</style>
+            nav a {
+                font-size: 11px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<audio id="music" loop preload="auto">
-    <source src="background.mp3" type="audio/mpeg">
-</audio>
+    <nav>
+        <a href="projetos.html">Projetos</a>
+        <a href="blog.html">Blog</a>
+        <a href="aulas.html">Aulas</a>
+    </nav>
 
-<nav>
-    <a href="projetos.html">Projetos</a>
-    <a href="blog.html">Blog</a>
-</nav>
+    <main>
 
-<section class="hero">
-    <div class="hero-content">
-        <h1>ZOTH<span>.</span></h1>
-        <div class="line"></div>
-        <p class="tagline">Nothing to prove.</p>
-    </div>
-</section>
+        <section class="hero">
+            <h1>ZOTH<span>.</span></h1>
 
-<section class="about" id="sobre">
-    <div class="about-content">
-        <h2>Sobre:</h2>
+            <p>NOTHING TO PROVE.</p>
 
-        <p>
-            Este espaço foi criado para...
-            <!-- Escreva aqui a explicação sobre o site. -->
-        </p>
-    </div>
-</section>
+            <div class="line"></div>
+        </section>
 
-<footer>
-    © <span id="year"></span> ZOTH
-</footer>
+        <section class="about" id="sobre">
+            <h2>Sobre:</h2>
 
-<button class="music-toggle" id="musicButton">
-    <span>▶</span> MUSIC
-</button>
+            <p>
+                <!-- Escreva aqui a explicação sobre o site. -->
+            </p>
+        </section>
 
-<script>
-const music = document.getElementById("music");
-const button = document.getElementById("musicButton");
+    </main>
 
-music.volume = 0.2;
+    <footer>
+        ZOTH © 2026
+    </footer>
 
-function updateButton(playing) {
-    button.innerHTML = playing
-        ? "<span>Ⅱ</span> PAUSE"
-        : "<span>▶</span> MUSIC";
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
 
-    button.classList.toggle("playing", playing);
-}
+    <button id="musicButton" aria-label="Ativar música">
+        ♪ MUSIC OFF
+    </button>
 
-async function startMusic() {
-    try {
-        await music.play();
-        updateButton(true);
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
+    <script>
+        const music = document.getElementById("backgroundMusic");
+        const musicButton = document.getElementById("musicButton");
 
-// Tentativa de reprodução automática.
-startMusic();
+        let musicPlaying = false;
 
-// Alternativa caso o navegador bloqueie.
-function firstInteraction() {
-    if (music.paused) startMusic();
+        music.volume = 0.2;
 
-    document.removeEventListener("click", firstInteraction);
-    document.removeEventListener("keydown", firstInteraction);
-}
+        async function startMusic() {
+            try {
+                await music.play();
+                musicPlaying = true;
+                updateMusicButton();
+            } catch (error) {
+                musicPlaying = false;
+                updateMusicButton();
+            }
+        }
 
-document.addEventListener("click", firstInteraction);
-document.addEventListener("keydown", firstInteraction);
+        function updateMusicButton() {
+            musicButton.textContent = musicPlaying
+                ? "♪ MUSIC ON"
+                : "♪ MUSIC OFF";
 
-// Controle manual.
-button.addEventListener("click", async (event) => {
-    event.stopPropagation();
+            musicButton.setAttribute(
+                "aria-label",
+                musicPlaying ? "Desativar música" : "Ativar música"
+            );
+        }
 
-    if (music.paused) {
-        await startMusic();
-    } else {
-        music.pause();
-        updateButton(false);
-    }
-});
+        musicButton.addEventListener("click", async (event) => {
+            event.stopPropagation();
 
-music.addEventListener("pause", () => updateButton(false));
-music.addEventListener("play", () => updateButton(true));
+            if (musicPlaying) {
+                music.pause();
+                musicPlaying = false;
+                updateMusicButton();
+            } else {
+                await startMusic();
+            }
+        });
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
-</script>
+        // Tentativa de reprodução automática
+        window.addEventListener("load", startMusic);
+
+        // Se o navegador bloquear, tenta após a primeira interação
+        async function firstInteraction() {
+            if (!musicPlaying) {
+                await startMusic();
+            }
+
+            if (musicPlaying) {
+                document.removeEventListener("click", firstInteraction);
+                document.removeEventListener("keydown", firstInteraction);
+            }
+        }
+
+        document.addEventListener("click", firstInteraction);
+        document.addEventListener("keydown", firstInteraction);
+    </script>
 
 </body>
 </html>
