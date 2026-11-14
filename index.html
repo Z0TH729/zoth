@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>ZOTH</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,11 +26,10 @@
             color: #f2f2f2;
             font-family: 'Space Grotesk', sans-serif;
             overflow-x: hidden;
-            opacity: 0;
-            animation: pageEnter 1s ease forwards;
-        }
 
-        /* Grade de fundo */
+            opacity: 0;
+            animation: pageEnter .65s ease forwards;
+        }
 
         body::before {
             content: "";
@@ -45,7 +43,7 @@
             z-index: -1;
         }
 
-        /* Menu */
+        /* Navegação */
 
         nav {
             position: absolute;
@@ -55,6 +53,7 @@
             display: flex;
             gap: 35px;
             z-index: 10;
+            white-space: nowrap;
         }
 
         nav a {
@@ -86,6 +85,7 @@
             font-weight: 600;
             letter-spacing: .28em;
             padding-left: .28em;
+
             opacity: 0;
             animation: titleEnter 1.3s cubic-bezier(.16, 1, .3, 1) .3s forwards;
         }
@@ -99,6 +99,7 @@
             color: #777;
             font-size: 12px;
             letter-spacing: 4px;
+
             opacity: 0;
             animation: fadeUp 1s ease 1s forwards;
         }
@@ -140,8 +141,6 @@
             line-height: 2;
         }
 
-        /* Rodapé */
-
         footer {
             padding: 25px;
             text-align: center;
@@ -173,11 +172,38 @@
             color: #fff;
         }
 
-        /* Animações */
+        /* Transições */
+
+        body.page-exit {
+            animation: pageExit .35s ease forwards;
+            pointer-events: none;
+        }
 
         @keyframes pageEnter {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+                filter: blur(4px);
+            }
+
             to {
                 opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes pageExit {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+                filter: blur(4px);
             }
         }
 
@@ -212,8 +238,6 @@
                 transform: scaleX(1);
             }
         }
-
-        /* Acessibilidade */
 
         @media (prefers-reduced-motion: reduce) {
             *,
@@ -257,12 +281,9 @@
     </nav>
 
     <main>
-
         <section class="hero">
             <h1>ZOTH<span>.</span></h1>
-
             <p>NOTHING TO PROVE.</p>
-
             <div class="line"></div>
         </section>
 
@@ -273,7 +294,6 @@
                 <!-- Escreva aqui a explicação sobre o site. -->
             </p>
         </section>
-
     </main>
 
     <footer>
@@ -289,12 +309,63 @@
     </button>
 
     <script>
-        const music = document.getElementById("backgroundMusic");
-        const musicButton = document.getElementById("musicButton");
+        // Transição entre páginas
+
+        document.querySelectorAll('a[href]').forEach(link => {
+            link.addEventListener('click', event => {
+                const url = link.getAttribute('href');
+
+                if (
+                    !url ||
+                    url.startsWith('#') ||
+                    link.target === '_blank' ||
+                    link.hasAttribute('download') ||
+                    event.ctrlKey ||
+                    event.metaKey ||
+                    event.shiftKey ||
+                    event.altKey
+                ) {
+                    return;
+                }
+
+                const destination = new URL(url, window.location.href);
+
+                if (
+                    destination.origin !== window.location.origin ||
+                    destination.href === window.location.href
+                ) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                document.body.classList.add('page-exit');
+
+                setTimeout(() => {
+                    window.location.href = destination.href;
+                }, 350);
+            });
+        });
+
+        // Música
+
+        const music = document.getElementById('backgroundMusic');
+        const musicButton = document.getElementById('musicButton');
 
         let musicPlaying = false;
 
         music.volume = 0.2;
+
+        function updateMusicButton() {
+            musicButton.textContent = musicPlaying
+                ? '♪ MUSIC ON'
+                : '♪ MUSIC OFF';
+
+            musicButton.setAttribute(
+                'aria-label',
+                musicPlaying ? 'Desativar música' : 'Ativar música'
+            );
+        }
 
         async function startMusic() {
             try {
@@ -307,18 +378,7 @@
             }
         }
 
-        function updateMusicButton() {
-            musicButton.textContent = musicPlaying
-                ? "♪ MUSIC ON"
-                : "♪ MUSIC OFF";
-
-            musicButton.setAttribute(
-                "aria-label",
-                musicPlaying ? "Desativar música" : "Ativar música"
-            );
-        }
-
-        musicButton.addEventListener("click", async (event) => {
+        musicButton.addEventListener('click', async event => {
             event.stopPropagation();
 
             if (musicPlaying) {
@@ -330,23 +390,21 @@
             }
         });
 
-        // Tentativa de reprodução automática
-        window.addEventListener("load", startMusic);
+        window.addEventListener('load', startMusic);
 
-        // Se o navegador bloquear, tenta após a primeira interação
         async function firstInteraction() {
             if (!musicPlaying) {
                 await startMusic();
             }
 
             if (musicPlaying) {
-                document.removeEventListener("click", firstInteraction);
-                document.removeEventListener("keydown", firstInteraction);
+                document.removeEventListener('click', firstInteraction);
+                document.removeEventListener('keydown', firstInteraction);
             }
         }
 
-        document.addEventListener("click", firstInteraction);
-        document.addEventListener("keydown", firstInteraction);
+        document.addEventListener('click', firstInteraction);
+        document.addEventListener('keydown', firstInteraction);
     </script>
 
 </body>
