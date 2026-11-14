@@ -57,6 +57,9 @@
         .archive-preview-label{position:absolute;left:12px;bottom:10px;z-index:1;color:#aaa;font:9px 'Fira Code',monospace;letter-spacing:1.5px}
         .archive-copy{min-width:0;align-self:center}
         .archive-status{display:inline-block;margin-bottom:7px;color:#999;font:9px 'Fira Code',monospace;letter-spacing:1.5px}
+        .archive-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}
+        .archive-tags .archive-status{margin:0;padding:5px 7px;border:1px solid #555;border-radius:3px;color:#ccc}
+        .archive-tags .archive-status-muted{border-color:#383838;color:#777}
         .archive-copy h3{font-size:17px;font-weight:600;letter-spacing:.2px}
         .archive-handle{margin-top:4px;color:#777;font:11px 'Fira Code',monospace}
         .archive-copy p{max-width:720px;margin-top:10px;color:#999;font-size:12px;line-height:1.75}
@@ -171,7 +174,10 @@
                     <span class="archive-preview-label">STELLBYTE NETWORK / CHANNEL</span>
                 </div>
                 <div class="archive-copy">
-                    <span class="archive-status">◈ PROJETO ENCERRADO</span>
+                    <div class="archive-tags" aria-label="Status do projeto">
+                        <span class="archive-status">ENCERRADO</span>
+                        <span class="archive-status archive-status-muted">INCOMPLETO</span>
+                    </div>
                     <h3>Stellbyte Network</h3>
                     <div class="archive-handle">@STELLBYTENETWORK</div>
                     <p>O projeto chegou ao fim após divergências entre os educadores que trabalhavam em seu desenvolvimento. Foram dias e noites de estudo, planejamento e construção. Mesmo sem continuar, o esforço, as ideias e o aprendizado fazem parte da nossa história.</p>
