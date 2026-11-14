@@ -9,12 +9,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦀</text></svg>">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             min-height: 100vh;
             background: #080808;
@@ -26,246 +21,62 @@
             text-align: center;
             overflow-x: hidden;
         }
-
         .back-link {
-            position: absolute;
-            top: 35px;
-            left: 40px;
-            color: #777;
-            text-decoration: none;
-            font-size: 13px;
-            transition: color .3s;
+            position: absolute; top: 35px; left: 40px; color: #777; text-decoration: none; font-size: 13px; transition: color .3s;
         }
-
-        .back-link:hover {
-            color: #d71920;
-        }
-
-        main {
-            width: min(90%, 700px);
-            padding: 100px 0 60px;
-        }
-
-        h1 {
-            font-size: clamp(55px, 10vw, 100px);
-            letter-spacing: .25em;
-            padding-left: .25em;
-        }
-
-        h1 span {
-            color: #d71920;
-        }
-
-        .subtitle {
-            margin-top: 20px;
-            color: #777;
-            font-size: 13px;
-            letter-spacing: 2px;
-        }
-
-        /* CARD RUST */
-
+        .back-link:hover { color: #d71920; }
+        main { width: min(90%, 700px); padding: 100px 0 60px; }
+        h1 { font-size: clamp(55px, 10vw, 100px); letter-spacing: .25em; padding-left: .25em; }
+        h1 span { color: #d71920; }
+        .subtitle { margin-top: 20px; color: #777; font-size: 13px; letter-spacing: 2px; }
         .rust-card {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            width: 100%;
-            max-width: 420px;
-            min-height: 150px;
-            margin: 65px auto 0;
-            padding: 28px;
-
-            overflow: hidden;
-
-            background: linear-gradient(135deg, #171717, #0b0b0b);
-            border: 1px solid #39231f;
-            border-radius: 10px;
-
-            text-align: left;
-            text-decoration: none;
-            color: #f2f2f2;
-
-            transition:
-                transform .35s ease,
-                border-color .35s ease,
-                box-shadow .35s ease;
+            position: relative; display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 420px; min-height: 150px; margin: 65px auto 0; padding: 28px; overflow: hidden; background: linear-gradient(135deg, #171717, #0b0b0b); border: 1px solid #39231f; border-radius: 10px; text-align: left; text-decoration: none; color: #f2f2f2; transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
         }
-
-        .rust-card:hover {
-            transform: translateY(-7px);
-            border-color: #CE422B;
-            box-shadow: 0 12px 35px #CE422B22;
-        }
-
+        .rust-card:hover { transform: translateY(-7px); border-color: #CE422B; box-shadow: 0 12px 35px #CE422B22; }
         .rust-card::before {
-            content: "";
-            position: absolute;
-
-            width: 180px;
-            height: 180px;
-
-            right: -60px;
-            top: -70px;
-
-            background: #CE422B;
-            opacity: .08;
-            filter: blur(45px);
-            border-radius: 50%;
-
-            transition: opacity .35s ease;
+            content: ""; position: absolute; width: 180px; height: 180px; right: -60px; top: -70px; background: #CE422B; opacity: .08; filter: blur(45px); border-radius: 50%; transition: opacity .35s ease;
         }
-
-        .rust-card:hover::before {
-            opacity: .2;
-        }
-
-        .rust-card-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .rust-card-label {
-            color: #CE422B;
-            font-size: 10px;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-        }
-
-        .rust-card h2 {
-            font-size: 35px;
-            letter-spacing: 3px;
-            font-weight: 700;
-        }
-
-        .rust-card h2 span {
-            color: #CE422B;
-        }
-
-        .rust-card p {
-            color: #888;
-            font-size: 12px;
-            margin-top: 7px;
-            letter-spacing: 0;
-        }
-
-        .rust-crab {
-            position: relative;
-            z-index: 1;
-
-            font-size: 65px;
-
-            filter: drop-shadow(0 0 12px #CE422B55);
-
-            animation: crab-float 3s ease-in-out infinite;
-        }
-
-        .rust-card-arrow {
-            position: absolute;
-            right: 20px;
-            bottom: 15px;
-
-            color: #CE422B;
-            font-size: 18px;
-
-            transition: transform .3s ease;
-        }
-
-        .rust-card:hover .rust-card-arrow {
-            transform: translateX(5px);
-        }
-
+        .rust-card:hover::before { opacity: .2; }
+        .rust-card-content { position: relative; z-index: 1; }
+        .rust-card-label { color: #CE422B; font-size: 10px; letter-spacing: 3px; margin-bottom: 10px; }
+        .rust-card h2 { font-size: 35px; letter-spacing: 3px; font-weight: 700; }
+        .rust-card h2 span { color: #CE422B; }
+        .rust-card p { color: #888; font-size: 12px; margin-top: 7px; letter-spacing: 0; }
+        .rust-crab { position: relative; z-index: 1; font-size: 65px; filter: drop-shadow(0 0 12px #CE422B55); animation: crab-float 3s ease-in-out infinite; }
+        .rust-card-arrow { position: absolute; right: 20px; bottom: 15px; color: #CE422B; font-size: 18px; transition: transform .3s ease; }
+        .rust-card:hover .rust-card-arrow { transform: translateX(5px); }
         @keyframes crab-float {
-            0%, 100% {
-                transform: translateY(0) rotate(-4deg);
-            }
-
-            50% {
-                transform: translateY(-9px) rotate(4deg);
-            }
+            0%, 100% { transform: translateY(0) rotate(-4deg); }
+            50% { transform: translateY(-9px) rotate(4deg); }
         }
-
-        /* RESPONSIVIDADE */
-
         @media (max-width: 600px) {
-            .back-link {
-                top: 25px;
-                left: 20px;
-            }
-
-            main {
-                padding-top: 90px;
-            }
-
-            .rust-card {
-                padding: 22px;
-                min-height: 130px;
-            }
-
-            .rust-crab {
-                font-size: 50px;
-            }
-
-            .rust-card h2 {
-                font-size: 29px;
-            }
-
-            .rust-card-label {
-                font-size: 9px;
-                letter-spacing: 2px;
-            }
+            .back-link { top: 25px; left: 20px; }
+            main { padding-top: 90px; }
+            .rust-card { padding: 22px; min-height: 130px; }
+            .rust-crab { font-size: 50px; }
+            .rust-card h2 { font-size: 29px; }
+            .rust-card-label { font-size: 9px; letter-spacing: 2px; }
         }
-
         @media (prefers-reduced-motion: reduce) {
-            .rust-crab {
-                animation: none;
-            }
-
-            .rust-card {
-                transition: none;
-            }
+            .rust-crab { animation: none; }
+            .rust-card { transition: none; }
         }
     </style>
 </head>
-
 <body>
-
     <a class="back-link" href="index.html">← VOLTAR</a>
-
     <main>
-
         <h1>AULAS<span>.</span></h1>
-
-        <p class="subtitle">
-            Conhecimento em construção.
-        </p>
-
-        <!-- RUST -->
-
-        <a href="aulas/index.html" class="rust-card">
-
+        <p class="subtitle">Conhecimento em construção.</p>
+        <a href="rust/index.html" class="rust-card">
             <div class="rust-card-content">
-
-                <div class="rust-card-label">
-                    LINGUAGEM DE PROGRAMAÇÃO
-                </div>
-
+                <div class="rust-card-label">LINGUAGEM DE PROGRAMAÇÃO</div>
                 <h2>RUST<span>.</span></h2>
-
-                <p>
-                    Performance, controle e segurança.
-                </p>
-
+                <p>Performance, controle e segurança.</p>
             </div>
-
             <div class="rust-crab">🦀</div>
-
             <span class="rust-card-arrow">→</span>
-
         </a>
-
     </main>
-
 </body>
 </html>
