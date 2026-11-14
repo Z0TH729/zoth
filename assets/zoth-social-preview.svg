@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">ZOTH</title>
+  <desc id="desc">Identidade visual ZOTH em preto, branco e vermelho.</desc>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#ffffff" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="50%" cy="48%" r="55%">
+      <stop offset="0" stop-color="#d71920" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#d71920" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#8f1016"/>
+      <stop offset=".5" stop-color="#ed252d"/>
+      <stop offset="1" stop-color="#8f1016"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#080808"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <path d="M0 0H1200" stroke="#d71920" stroke-width="5"/>
+  <path d="M72 82H1128M72 548H1128" stroke="#ffffff" stroke-opacity=".13"/>
+  <g fill="#777" font-family="monospace" font-size="15" letter-spacing="4">
+    <text x="74" y="64">PERSONAL TECHNOLOGY SPACE</text>
+    <text x="1126" y="64" text-anchor="end">EST. 2026</text>
+  </g>
+  <g text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    <text x="600" y="345" fill="#f2f2f2" font-size="172" letter-spacing="24">ZOTH<tspan fill="#d71920">.</tspan></text>
+  </g>
+  <rect x="540" y="388" width="120" height="4" rx="2" fill="url(#accent)"/>
+  <text x="600" y="438" text-anchor="middle" fill="#a5a5a5" font-family="monospace" font-size="18" letter-spacing="5">REDES · PROGRAMAÇÃO · TECNOLOGIA</text>
+  <g fill="#d71920">
+    <circle cx="74" cy="584" r="4"/>
+    <circle cx="1126" cy="584" r="4"/>
+  </g>
+  <text x="600" y="590" text-anchor="middle" fill="#666" font-family="monospace" font-size="13" letter-spacing="3">ZOTH.DEV</text>
+</svg>
