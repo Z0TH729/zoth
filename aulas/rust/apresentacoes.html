@@ -22,10 +22,10 @@ nav a{color:#777;font-size:12px;transition:color .25s}
 nav a:hover,nav a.active{color:#f2f2f2}
 nav a.active::after{content:"";display:block;width:100%;height:2px;margin-top:7px;background:var(--accent)}
 main{width:min(1000px,calc(100% - 40px));flex:1;min-height:400px;margin:0 auto;display:grid;place-items:center}
-.empty-state{display:flex;flex-direction:column;align-items:center;gap:22px}
-.empty-message{color:#777;font-size:clamp(16px,3vw,20px);font-weight:400;text-align:center}
-.loading-spinner{width:28px;height:28px;border:3px solid #ffffff18;border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
+.presentation-state{width:min(720px,100%);display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
+.eyebrow{color:var(--accent);font:11px 'Fira Code',monospace;letter-spacing:3px}
+h1{max-width:650px;font-size:clamp(30px,6vw,54px);line-height:1.12;font-weight:600;letter-spacing:-2px}
+.description{max-width:590px;color:#888;font-size:clamp(14px,2vw,17px);line-height:1.8}
 footer{border-top:1px solid var(--border);padding:30px 20px;text-align:center;color:#666;font:10px 'Fira Code',monospace;letter-spacing:2px}
 @keyframes pageIn{to{opacity:1}}
 @media(max-width:650px){.topbar{width:calc(100% - 30px);padding:18px 0;align-items:flex-start;flex-direction:column;gap:16px}nav{width:100%;justify-content:space-between;gap:8px;flex-wrap:wrap}nav a{font-size:10px}main{width:calc(100% - 30px);min-height:350px}}
@@ -45,10 +45,11 @@ footer{border-top:1px solid var(--border);padding:30px 20px;text-align:center;co
 </nav>
 </header>
 <main>
-<div class="empty-state">
-<p class="empty-message">Ainda não há nada aqui...</p>
-<div class="loading-spinner" role="status" aria-label="Carregando"></div>
-</div>
+<section class="presentation-state" aria-labelledby="presentation-title">
+<p class="eyebrow">RUST / ZOTH</p>
+<h1 id="presentation-title">O conhecimento é construído linha por linha.</h1>
+<p class="description">Esta seção reúne apresentações, conceitos e estudos sobre Rust. Cada conteúdo representa uma etapa do aprendizado, da compreensão dos fundamentos à construção de projetos reais.</p>
+</section>
 </main>
 <footer>ZOTH © 2026</footer>
 </body>
