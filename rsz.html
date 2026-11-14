@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>RSZ | ZOTH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{min-height:100vh;overflow-x:hidden;background:#080808;color:#f2f2f2;font-family:'Space Grotesk',sans-serif;opacity:0;animation:pageIn .7s ease forwards}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:52px 52px}
+a{color:inherit;text-decoration:none}
+.topbar{width:min(1100px,calc(100% - 40px));height:76px;margin:auto;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #202020}
+.brand{color:#f2f2f2;font-size:21px;font-weight:700;letter-spacing:5px}.brand span{color:#d71920}
+nav{display:flex;align-items:center;gap:25px}nav a{color:#777;font-size:12px;transition:color .25s}nav a:hover,nav a.active{color:#f2f2f2}nav a.active::after{content:"";display:block;width:100%;height:2px;margin-top:7px;background:#d71920}
+main{width:min(760px,calc(100% - 40px));margin:48px auto 100px}
+.page-heading{margin-bottom:28px;animation:rise .7s both}
+.eyebrow{color:#d71920;font:11px 'Fira Code',monospace;letter-spacing:3px;margin-bottom:12px}
+h1{font-size:clamp(34px,6vw,54px);line-height:1.05;font-weight:600}
+.intro{max-width:590px;margin-top:14px;color:#858585;font-size:14px;line-height:1.8}
+.feed{display:grid;gap:16px}
+.post-card{overflow:hidden;border:1px solid #292929;border-radius:12px;background:#101010;animation:rise .8s .12s both;transition:border-color .25s}
+.post-card:hover{border-color:#454545}
+.post-header{display:flex;align-items:center;gap:12px;padding:19px 22px;border-bottom:1px solid #202020}
+.post-avatar{width:42px;height:42px;flex:0 0 42px;display:block;object-fit:cover;border:1px solid #5a2023;border-radius:50%;background:#191010}
+.post-meta{display:flex;flex-direction:column;gap:3px}
+.post-meta strong{font-size:13px;font-weight:600}
+.post-meta span{color:#686868;font:10px 'Fira Code',monospace}
+.post-menu{margin-left:auto;color:#777;font-size:23px;letter-spacing:2px;line-height:1}
+.post-content{padding:22px}
+.post-content p{margin-bottom:17px;color:#ededed;font-size:16px;line-height:1.6}
+.post-image{display:block;width:100%;max-height:620px;object-fit:contain;border:1px solid #292929;border-radius:9px;background:#080808}
+.post-footer{display:flex;justify-content:space-between;gap:12px;padding:14px 22px;border-top:1px solid #202020;color:#626262;font:9px 'Fira Code',monospace;letter-spacing:1px}
+footer{padding:25px 20px;border-top:1px solid #1b1b1b;color:#444;text-align:center;font:10px 'Fira Code',monospace;letter-spacing:2px}
+@keyframes pageIn{to{opacity:1}}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:650px){.topbar{width:calc(100% - 30px);height:auto;min-height:70px;align-items:flex-start;padding:20px 0 14px;flex-direction:column;gap:16px}nav{width:100%;justify-content:space-between;gap:8px;flex-wrap:wrap}nav a{font-size:10px}main{width:calc(100% - 30px);margin-top:38px}}
+@media(max-width:500px){.post-header{padding:16px}.post-content{padding:16px}.post-footer{padding:12px 16px;font-size:8px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}body{opacity:1}}
+</style>
+</head>
+<body>
+<header class="topbar">
+<a class="brand" href="index.html">ZOTH<span>.</span></a>
+<nav aria-label="Navegação principal">
+<a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="apoiadores.html">Apoiadores</a><a href="blog.html">Blog</a><a href="rsz.html" class="active">RSZ</a><a href="aulas.html">Aulas</a>
+</nav>
+</header>
+<main>
+<section class="page-heading">
+<p class="eyebrow">REDE SOCIAL / PUBLICAÇÕES AUTORAIS</p>
+<h1>RSZ<span style="color:#d71920">.</span></h1>
+<p class="intro">Um espaço pessoal para compartilhar registros, imagens, pensamentos e acontecimentos. Aqui, as publicações são minhas.</p>
+</section>
+<section class="feed" aria-label="Publicações">
+<article class="post-card">
+<header class="post-header">
+<img class="post-avatar" src="assets/perfil.png" alt="Foto de perfil de Zoth">
+<div class="post-meta"><strong>zoth</strong><span>14/11/2026 às 07:13:40</span></div>
+<span class="post-menu" aria-hidden="true">···</span>
+</header>
+<div class="post-content">
+<p>acordado desde madrugada</p>
+<img class="post-image" src="assets/postblog1.jpeg" alt="Imagem da publicação: acordado desde madrugada" loading="lazy">
+</div>
+<footer class="post-footer"><span>PUBLICAÇÃO PESSOAL</span><span>RSZ / ZOTH</span></footer>
+</article>
+</section>
+</main>
+<footer>ZOTH © 2026</footer>
+</body>
+</html>
