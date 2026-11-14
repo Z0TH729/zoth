@@ -21,6 +21,8 @@ h1{font-size:clamp(34px,6vw,58px);line-height:1.05;font-weight:600}.intro{max-wi
 .content-card:hover{transform:translateY(-5px);border-color:#d71920;box-shadow:0 12px 35px rgba(215,25,32,.09)}
 .content-card h2,.content-card h3{font-size:19px;font-weight:600}.content-card p{margin-top:10px;color:#858585;font-size:13px;line-height:1.75}
 .card-label{margin-bottom:12px;color:#d71920;font:10px 'Fira Code',monospace;letter-spacing:2px}
+.status-maintenance{display:inline-flex;align-items:center;gap:7px;margin:0 0 12px;padding:5px 8px;border:1px solid rgba(215,145,25,.35);border-radius:4px;background:rgba(215,145,25,.07);color:#d7a34a;font:9px 'Fira Code',monospace;letter-spacing:1.2px}
+.status-maintenance::before{content:"";width:6px;height:6px;border-radius:50%;background:#d7a34a;box-shadow:0 0 8px rgba(215,163,74,.45)}
 .empty-state{min-height:210px;display:grid;place-items:center;padding:35px 20px;border:1px dashed #333;border-radius:10px;background:rgba(15,15,15,.72);text-align:center}
 .empty-icon{width:54px;height:54px;margin:0 auto 17px;display:grid;place-items:center;border:1px solid #3a2021;border-radius:50%;color:#d71920;font-size:22px;animation:float 3s ease-in-out infinite}
 .empty-state h2{font-size:16px;font-weight:500}.empty-state p{max-width:390px;margin-top:8px;color:#777;font-size:12px;line-height:1.7}
@@ -40,7 +42,7 @@ footer{padding:25px 20px;border-top:1px solid #1b1b1b;color:#444;text-align:cent
 <circle cx="24" cy="24" r="19"/><circle cx="24" cy="24" r="10"/>
 <path d="M24 1v12M24 35v12M1 24h12M35 24h12M10.5 10.5l8.3 8.3m10.4 10.4 8.3 8.3m0-27-8.3 8.3m-10.4 10.4-8.3 8.3"/>
 </svg>
-<div><div class="card-label" style="margin-bottom:5px">OSINT / WEB TOOL</div>
+<div><div class="status-maintenance">EM MANUTENÇÃO</div><div class="card-label" style="margin-bottom:5px">OSINT / WEB TOOL</div>
 <h3><strong style="color:#f2f2f2">OSINT</strong><span style="color:#d71920">FRIEND</span></h3></div>
 </div>
 <p>Ferramenta web de inteligência de fontes abertas, com interface para organizar consultas e explorar informações disponíveis publicamente.</p>
