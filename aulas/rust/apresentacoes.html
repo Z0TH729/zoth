@@ -29,7 +29,7 @@ main{width:min(1000px,calc(100% - 40px));flex:1;min-height:400px;margin:0 auto;d
 footer{border-top:1px solid var(--border);padding:30px 20px;text-align:center;color:#666;font:10px 'Fira Code',monospace;letter-spacing:2px}
 @keyframes pageIn{to{opacity:1}}
 @media(max-width:650px){.topbar{width:calc(100% - 30px);padding:18px 0;align-items:flex-start;flex-direction:column;gap:16px}nav{width:100%;justify-content:space-between;gap:8px;flex-wrap:wrap}nav a{font-size:10px}main{width:calc(100% - 30px);min-height:350px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.loading-spinner{animation:none}body{opacity:1}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.loading-spinner{animation:spin .8s linear infinite!important}body{opacity:1}}
 </style>
 </head>
 <body>
