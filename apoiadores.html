@@ -504,6 +504,41 @@
         }
         @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     </style>
+
+    <script>
+    (() => {
+        const siteRoot = new URL('/zoth/', location.origin);
+        const versionUrl = new URL('version.json', siteRoot);
+        versionUrl.searchParams.set('_', Date.now().toString());
+
+        fetch(versionUrl, { cache: 'no-store' })
+            .then(response => {
+                if (!response.ok) throw new Error('Versão indisponível');
+                return response.json();
+            })
+            .then(({ version }) => {
+                if (!version) return;
+                const currentUrl = new URL(location.href);
+                if (currentUrl.searchParams.get('zoth_build') !== version) {
+                    currentUrl.searchParams.set('zoth_build', version);
+                    location.replace(currentUrl.href);
+                    return;
+                }
+
+                document.addEventListener('DOMContentLoaded', () => {
+                    document.querySelectorAll('img[src]').forEach(img => {
+                        const imageUrl = new URL(img.getAttribute('src'), document.baseURI);
+                        if (imageUrl.origin === location.origin && imageUrl.pathname.startsWith(siteRoot.pathname + 'assets/')) {
+                            imageUrl.searchParams.set('v', version);
+                            img.src = imageUrl.href;
+                        }
+                    });
+                }, { once: true });
+            })
+            .catch(error => console.warn('[ZOTH] Não foi possível verificar a versão:', error));
+    })();
+    </script>
+
 </head>
 <body>
     <header class="topbar">
