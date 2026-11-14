@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -258,10 +259,6 @@
             color: #f2f2f2;
         }
 
-        .terminal-comment {
-            color: #6f8f72;
-        }
-
         .note {
             background: #17110f;
             border: 1px solid #762D1C55;
@@ -332,10 +329,14 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: .01ms !important;
-                transition-duration: .01ms !important;
-                scroll-behavior: auto !important;
+            .topic {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            html {
+                scroll-behavior: auto;
             }
         }
     </style>
@@ -346,7 +347,9 @@
     <header>
         <div class="container">
             <nav>
-                <a class="back" href="index.html">← RUST</a>
+                <!-- VOLTA DIRETAMENTE PARA ZOTH/INDEX.HTML -->
+                <a class="back" href="../../index.html">← VOLTAR AO ZOTH</a>
+
                 <span class="brand">ZOTH / RUST</span>
             </nav>
         </div>
@@ -369,8 +372,6 @@
 
         <section class="content">
 
-            <!-- 01 -->
-
             <article class="topic">
                 <h2><span>01.</span> O que é Rust?</h2>
 
@@ -389,8 +390,6 @@
                     a memória.
                 </p>
             </article>
-
-            <!-- 02 -->
 
             <article class="topic">
                 <h2><span>02.</span> Por que Rust foi criada?</h2>
@@ -418,16 +417,14 @@
                 </p>
             </article>
 
-            <!-- 03 -->
-
             <article class="topic">
                 <h2><span>03.</span> Linguagem compilada</h2>
 
                 <p>
                     Rust é uma linguagem compilada.
-                    Isso significa que o código-fonte passa
-                    por um processo de compilação antes
-                    de ser executado como um programa nativo.
+                    O código-fonte passa por um processo
+                    de compilação antes de ser executado
+                    como um programa nativo.
                 </p>
 
                 <p>Podemos observar esse processo no terminal:</p>
@@ -442,8 +439,7 @@
 
                         <span class="terminal-name">zoth@rust: ~</span>
 
-                        <button class="terminal-copy"
-                            onclick="copiarTerminal(this)">
+                        <button class="terminal-copy" onclick="copiarTerminal(this)">
                             COPIAR
                         </button>
                     </div>
@@ -466,8 +462,6 @@
                     o executável.
                 </p>
             </article>
-
-            <!-- 04 -->
 
             <article class="topic">
                 <h2><span>04.</span> O compilador Rust</h2>
@@ -495,8 +489,7 @@
 
                         <span class="terminal-name">zoth@rust: ~</span>
 
-                        <button class="terminal-copy"
-                            onclick="copiarTerminal(this)">
+                        <button class="terminal-copy" onclick="copiarTerminal(this)">
                             COPIAR
                         </button>
                     </div>
@@ -511,8 +504,6 @@
                     compile o arquivo <strong>main.rs</strong>.
                 </p>
             </article>
-
-            <!-- 05 -->
 
             <article class="topic">
                 <h2><span>05.</span> Cargo</h2>
@@ -537,8 +528,7 @@
 
                         <span class="terminal-name">zoth@rust: ~/Projetos</span>
 
-                        <button class="terminal-copy"
-                            onclick="copiarTerminal(this)">
+                        <button class="terminal-copy" onclick="copiarTerminal(this)">
                             COPIAR
                         </button>
                     </div>
@@ -564,8 +554,6 @@
                     manualmente.
                 </p>
             </article>
-
-            <!-- 06 -->
 
             <article class="topic">
                 <h2><span>06.</span> Ownership</h2>
@@ -593,8 +581,6 @@
                 </div>
             </article>
 
-            <!-- 07 -->
-
             <article class="topic">
                 <h2><span>07.</span> Onde Rust é utilizada?</h2>
 
@@ -613,8 +599,6 @@
                     • Componentes de infraestrutura.
                 </p>
             </article>
-
-            <!-- 08 -->
 
             <article class="topic">
                 <h2><span>08.</span> Nosso objetivo</h2>
@@ -636,8 +620,8 @@
         </section>
 
         <div class="navigation">
-            <a href="index.html">← VOLTAR AO RUST</a>
-            <a href="../../aulas.html">VOLTAR ÀS AULAS →</a>
+            <a href="../../index.html">← VOLTAR AO ZOTH</a>
+            <a href="../../aulas.html">VOLTAR ÀS AULAS</a>
         </div>
 
     </main>
@@ -690,8 +674,13 @@
 
             const topics = document.querySelectorAll(".topic");
 
+            if (!("IntersectionObserver" in window)) {
+                topics.forEach(topic => topic.classList.add("visible"));
+                return;
+            }
+
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
+                entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("visible");
                         observer.unobserve(entry.target);
@@ -701,9 +690,7 @@
                 threshold: 0.12
             });
 
-            topics.forEach(topic => {
-                observer.observe(topic);
-            });
+            topics.forEach(topic => observer.observe(topic));
         });
     </script>
 
