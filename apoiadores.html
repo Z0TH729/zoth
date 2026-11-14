@@ -447,10 +447,7 @@
             .section-head { align-items: flex-start; flex-direction: column; }
             .partnership { align-items: flex-start; flex-direction: column; padding: 21px; }
         }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
-            body { opacity: 1; }
-        }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     </style>
 </head>
 <body>
