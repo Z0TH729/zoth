@@ -3,24 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="theme-color" content="#080808">
     <title>ZOTH</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             min-height: 100vh;
             background: #080808;
@@ -30,9 +22,6 @@
             opacity: 0;
             animation: pageEnter 1s ease forwards;
         }
-
-        /* Grade de fundo */
-
         body::before {
             content: "";
             position: fixed;
@@ -44,9 +33,6 @@
             pointer-events: none;
             z-index: -1;
         }
-
-        /* Menu */
-
         nav {
             position: absolute;
             top: 35px;
@@ -56,7 +42,6 @@
             gap: 35px;
             z-index: 10;
         }
-
         nav a {
             color: #777;
             text-decoration: none;
@@ -64,13 +49,7 @@
             letter-spacing: 1px;
             transition: color .3s;
         }
-
-        nav a:hover {
-            color: #d71920;
-        }
-
-        /* Início */
-
+        nav a:hover { color: #d71920; }
         .hero {
             min-height: 100vh;
             display: flex;
@@ -80,7 +59,6 @@
             text-align: center;
             padding: 100px 20px;
         }
-
         .hero h1 {
             font-size: clamp(65px, 12vw, 130px);
             font-weight: 600;
@@ -89,11 +67,7 @@
             opacity: 0;
             animation: titleEnter 1.3s cubic-bezier(.16, 1, .3, 1) .3s forwards;
         }
-
-        .hero h1 span {
-            color: #d71920;
-        }
-
+        .hero h1 span { color: #d71920; }
         .hero p {
             margin-top: 18px;
             color: #777;
@@ -102,7 +76,6 @@
             opacity: 0;
             animation: fadeUp 1s ease 1s forwards;
         }
-
         .line {
             width: 35px;
             height: 2px;
@@ -112,36 +85,124 @@
             animation: lineEnter .7s ease 1.2s forwards;
         }
 
-        /* Sobre */
-
+        /* Apresentação */
         .about {
             min-height: 65vh;
-            padding: 100px 24px;
+            padding: 100px 24px 110px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
             border-top: 1px solid #181818;
         }
-
-        .about h2 {
+        .section-label {
             color: #d71920;
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 4px;
             font-weight: 500;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
+        }
+        .profile {
+            width: min(100%, 850px);
+            display: grid;
+            grid-template-columns: 150px minmax(0, 1fr);
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 30px;
+        }
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid #d71920;
+            background: #151515;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 0 28px rgba(215,25,32,.10);
+        }
+        .avatar img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .avatar-fallback {
+            color: #666;
+            font: 12px 'Fira Code', monospace;
+            letter-spacing: 2px;
+        }
+        .profile h2 {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .profile p {
+            color: #d71920;
+            font: 11px 'Fira Code', monospace;
+            letter-spacing: 1.5px;
+            line-height: 1.8;
         }
 
-        .about p {
-            max-width: 500px;
+        /* Terminal */
+        .terminal {
+            width: min(100%, 850px);
+            overflow: hidden;
+            border: 1px solid #333;
+            border-radius: 7px;
+            background: rgba(10,10,10,.96);
+            box-shadow: 0 18px 60px rgba(0,0,0,.28);
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+        .terminal.visible { opacity: 1; transform: translateY(0); }
+        .terminal-bar {
+            min-height: 39px;
+            padding: 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background: #1b1b1b;
+            border-bottom: 1px solid #303030;
+        }
+        .terminal-dot { width: 9px; height: 9px; border-radius: 50%; }
+        .terminal-dot.red { background: #e05252; }
+        .terminal-dot.yellow { background: #d9a441; }
+        .terminal-dot.green { background: #55a66b; }
+        .terminal-title {
+            margin-left: auto;
             color: #777;
-            font-size: 14px;
-            line-height: 2;
+            font: 11px 'Fira Code', monospace;
         }
-
-        /* Rodapé */
-
+        .terminal-body {
+            min-height: 260px;
+            padding: 24px;
+            color: #c9c9c9;
+            font: 13px/1.9 'Fira Code', monospace;
+            overflow-wrap: anywhere;
+        }
+        .terminal-line { margin-bottom: 13px; }
+        .terminal-command { color: #d71920; }
+        .terminal-output { color: #c9c9c9; white-space: pre-wrap; }
+        .terminal-prompt { color: #d71920; }
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            margin-left: 4px;
+            vertical-align: -2px;
+            background: #eee;
+            animation: blink 1s steps(2, start) infinite;
+        }
+        .site-note {
+            max-width: 620px;
+            margin-top: 32px;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.9;
+            text-align: center;
+        }
         footer {
             padding: 25px;
             text-align: center;
@@ -150,204 +211,169 @@
             letter-spacing: 2px;
         }
 
-        /* Música */
-
-        #musicButton {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: transparent;
-            border: 1px solid #333;
-            color: #888;
-            padding: 10px 15px;
-            font-family: inherit;
-            font-size: 11px;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: .3s;
-            z-index: 20;
-        }
-
-        #musicButton:hover {
-            border-color: #d71920;
-            color: #fff;
-        }
-
-        /* Animações */
-
-        @keyframes pageEnter {
-            to {
-                opacity: 1;
-            }
-        }
-
+        @keyframes pageEnter { to { opacity: 1; } }
         @keyframes titleEnter {
-            from {
-                opacity: 0;
-                transform: translateY(35px);
-                filter: blur(8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-                filter: blur(0);
-            }
+            from { opacity: 0; transform: translateY(35px); filter: blur(8px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
-
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes lineEnter { to { transform: scaleX(1); } }
+        @keyframes blink { to { visibility: hidden; } }
 
-        @keyframes lineEnter {
-            to {
-                transform: scaleX(1);
+        @media (max-width: 600px) {
+            nav { gap: 22px; top: 25px; }
+            nav a { font-size: 11px; }
+            .about { padding: 80px 18px; }
+            .profile {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                text-align: center;
+                gap: 18px;
+                margin-bottom: 25px;
             }
+            .avatar { width: 125px; height: 125px; }
+            .terminal-body { padding: 18px 15px; font-size: 11px; }
+            .terminal-title { font-size: 10px; }
         }
-
-        /* Acessibilidade */
-
         @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
+            *, *::before, *::after {
                 animation-duration: .01ms !important;
                 animation-delay: 0ms !important;
                 scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
             }
-
-            body,
-            .hero h1,
-            .hero p {
-                opacity: 1;
-            }
-
-            .line {
-                transform: scaleX(1);
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                gap: 20px;
-                top: 25px;
-            }
-
-            nav a {
-                font-size: 11px;
-            }
+            body, .hero h1, .hero p { opacity: 1; }
+            .line { transform: scaleX(1); }
+            .terminal { opacity: 1; transform: none; }
         }
     </style>
 </head>
 
 <body>
-
-    <nav>
+    <nav aria-label="Navegação principal">
         <a href="projetos.html">Projetos</a>
         <a href="blog.html">Blog</a>
         <a href="aulas.html">Aulas</a>
     </nav>
 
     <main>
-
         <section class="hero">
             <h1>ZOTH<span>.</span></h1>
-
-            <p>NOTHING TO PROVE.</p>
-
+            <p>PENSAR. CRIAR. EXPLORAR.</p>
             <div class="line"></div>
         </section>
 
         <section class="about" id="sobre">
-            <h2>Sobre:</h2>
+            <h2 class="section-label">SOBRE MIM</h2>
 
-            <p>
-                <!-- Escreva aqui a explicação sobre o site. -->
+            <div class="profile">
+                <div class="avatar">
+                    <img src="assets/perfil.jpg" alt="Foto de perfil de Zoth"
+                         onerror="this.remove(); this.nextElementSibling.hidden = false;">
+                    <span class="avatar-fallback" hidden>FOTO</span>
+                </div>
+                <div>
+                    <h2>Desenvolvedor de ferramentas</h2>
+                    <p>REDES · PROGRAMAÇÃO · TECNOLOGIA</p>
+                </div>
+            </div>
+
+            <div class="terminal" id="terminal" aria-label="Terminal com apresentação pessoal">
+                <div class="terminal-bar">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">zoth@localhost: ~</span>
+                </div>
+                <div class="terminal-body" id="terminalBody">
+                    <span class="terminal-prompt">zoth@localhost:~$ </span><span class="terminal-cursor"></span>
+                </div>
+            </div>
+
+            <p class="site-note">
+                Este espaço está em constante desenvolvimento. Novos projetos,
+                conteúdos e melhorias são adicionados continuamente.
             </p>
         </section>
-
     </main>
 
-    <footer>
-        ZOTH © 2026
-    </footer>
-
-    <audio id="backgroundMusic" loop preload="auto">
-        <source src="background.mp3" type="audio/mpeg">
-    </audio>
-
-    <button id="musicButton" aria-label="Ativar música">
-        ♪ MUSIC OFF
-    </button>
+    <footer>ZOTH © 2026</footer>
 
     <script>
-        const music = document.getElementById("backgroundMusic");
-        const musicButton = document.getElementById("musicButton");
+        const terminal = document.getElementById("terminal");
+        const terminalBody = document.getElementById("terminalBody");
 
-        let musicPlaying = false;
+        const commands = [
+            {
+                command: "whoami",
+                output: "Desenvolvedor de ferramentas e profissional da área de redes."
+            },
+            {
+                command: "cat sobre.txt",
+                output: "Tenho interesse em tecnologia, programação e na criação de soluções que ampliem as possibilidades do software."
+            },
+            {
+                command: "cat zoth.txt",
+                output: "O ZOTH é meu espaço pessoal, criado para reunir meus projetos, aulas de diferentes assuntos, pesquisas e experimentos.\n\nAqui registro minhas ideias, aprendizados e tudo aquilo que venho desenvolvendo ao longo da minha trajetória."
+            }
+        ];
 
-        music.volume = 0.2;
+        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-        async function startMusic() {
-            try {
-                await music.play();
-                musicPlaying = true;
-                updateMusicButton();
-            } catch (error) {
-                musicPlaying = false;
-                updateMusicButton();
+        async function typeText(element, text, speed = 38) {
+            for (const character of text) {
+                element.textContent += character;
+                await sleep(speed);
             }
         }
 
-        function updateMusicButton() {
-            musicButton.textContent = musicPlaying
-                ? "♪ MUSIC ON"
-                : "♪ MUSIC OFF";
+        async function runTerminal() {
+            terminalBody.innerHTML = "";
 
-            musicButton.setAttribute(
-                "aria-label",
-                musicPlaying ? "Desativar música" : "Ativar música"
-            );
+            for (const item of commands) {
+                const line = document.createElement("div");
+                line.className = "terminal-line";
+
+                const prompt = document.createElement("span");
+                prompt.className = "terminal-prompt";
+                prompt.textContent = "zoth@localhost:~$ ";
+
+                const command = document.createElement("span");
+                command.className = "terminal-command";
+
+                line.append(prompt, command);
+                terminalBody.appendChild(line);
+
+                await typeText(command, item.command, 65);
+                await sleep(280);
+
+                const output = document.createElement("div");
+                output.className = "terminal-output";
+                output.textContent = item.output;
+                line.appendChild(output);
+
+                await sleep(650);
+            }
+
+            const finalLine = document.createElement("div");
+            finalLine.className = "terminal-line";
+            finalLine.innerHTML =
+                '<span class="terminal-prompt">zoth@localhost:~$ </span><span class="terminal-cursor"></span>';
+            terminalBody.appendChild(finalLine);
         }
 
-        musicButton.addEventListener("click", async (event) => {
-            event.stopPropagation();
-
-            if (musicPlaying) {
-                music.pause();
-                musicPlaying = false;
-                updateMusicButton();
-            } else {
-                await startMusic();
+        const observer = new IntersectionObserver((entries) => {
+            if (entries.some(entry => entry.isIntersecting)) {
+                terminal.classList.add("visible");
+                runTerminal();
+                observer.disconnect();
             }
-        });
+        }, { threshold: 0.25 });
 
-        // Tentativa de reprodução automática
-        window.addEventListener("load", startMusic);
-
-        // Se o navegador bloquear, tenta após a primeira interação
-        async function firstInteraction() {
-            if (!musicPlaying) {
-                await startMusic();
-            }
-
-            if (musicPlaying) {
-                document.removeEventListener("click", firstInteraction);
-                document.removeEventListener("keydown", firstInteraction);
-            }
-        }
-
-        document.addEventListener("click", firstInteraction);
-        document.addEventListener("keydown", firstInteraction);
+        observer.observe(terminal);
     </script>
-
 </body>
 </html>
