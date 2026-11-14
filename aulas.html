@@ -13,6 +13,11 @@ nav{display:flex;align-items:center;gap:25px}nav a{color:#777;font-size:12px;tra
 main{width:min(1000px,calc(100% - 40px));margin:55px auto 100px}
 .page-heading{margin-bottom:28px;animation:rise .7s both}.eyebrow{color:#d71920;font:11px 'Fira Code',monospace;letter-spacing:3px;margin-bottom:12px}
 h1{font-size:clamp(34px,6vw,58px);line-height:1.05;font-weight:600}.intro{max-width:590px;margin-top:14px;color:#858585;font-size:14px;line-height:1.8}
+.status-legend{margin:0 0 34px;padding:22px 24px;border:1px solid #292929;border-radius:12px;background:#101010;animation:rise .75s .08s both}
+.status-legend h2{margin-bottom:7px;font-size:17px;font-weight:500}.legend-intro{margin-bottom:18px;color:#777;font-size:12px}
+.legend-list{display:grid;gap:13px}.legend-item{display:flex;align-items:center;gap:13px}.legend-item p{color:#aaa;font-size:13px;line-height:1.5}
+.status-tag{flex:0 0 auto;display:inline-block;padding:6px 9px;border:1px solid;border-radius:4px;font:10px 'Fira Code',monospace;letter-spacing:1px}
+.status-tag.pending-tag{border-color:#484848;color:#999}.status-tag.build-tag{border-color:#806626;color:#d6a43a}.status-tag.complete-tag{border-color:#286342;color:#55bd80}
 .panel{overflow:hidden;border:1px solid #292929;border-radius:12px;background:#101010;animation:rise .8s .12s both}
 .panel-body{padding:28px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:38px 0 18px}
 .section-head h2{font-size:19px;font-weight:500}.section-head p{color:#666;font:10px 'Fira Code',monospace}
@@ -27,11 +32,16 @@ h1{font-size:clamp(34px,6vw,58px);line-height:1.05;font-weight:600}.intro{max-wi
 .empty-state h2{font-size:16px;font-weight:500}.empty-state p{max-width:390px;margin-top:8px;color:#777;font-size:12px;line-height:1.7}
 footer{padding:25px 20px;border-top:1px solid #1b1b1b;color:#444;text-align:center;font:10px 'Fira Code',monospace;letter-spacing:2px}
 @keyframes pageIn{to{opacity:1}}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-@media(max-width:650px){.topbar{width:calc(100% - 30px);height:auto;min-height:70px;align-items:flex-start;padding:20px 0 14px;flex-direction:column;gap:16px}nav{width:100%;justify-content:space-between;gap:10px}nav a{font-size:11px}main{width:calc(100% - 30px);margin-top:38px}.panel-body{padding:21px}.section-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:650px){.topbar{width:calc(100% - 30px);height:auto;min-height:70px;align-items:flex-start;padding:20px 0 14px;flex-direction:column;gap:16px}nav{width:100%;justify-content:space-between;gap:10px}nav a{font-size:11px}main{width:calc(100% - 30px);margin-top:38px}.panel-body{padding:21px}.section-head{align-items:flex-start;flex-direction:column}.status-legend{padding:19px}.legend-item{align-items:flex-start;flex-direction:column;gap:7px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}body{opacity:1}}
 </style></head><body>
 <header class="topbar"><a class="brand" href="index.html">ZOTH<span>.</span></a><nav aria-label="Navegação principal"><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="apoiadores.html">Apoiadores</a><a href="blog.html">Blog</a><a href="aulas.html" class="active">Aulas</a></nav></header>
 <main><section class="page-heading"><p class="eyebrow">ESTUDO / COMPARTILHAMENTO</p><h1>Aulas<span style="color:#d71920">.</span></h1><p class="intro">Conteúdos organizados para estudar fundamentos, ferramentas e linguagens de programação.</p></section>
+<section class="status-legend" aria-labelledby="legend-title"><h2 id="legend-title">Legenda de status</h2><p class="legend-intro">Entenda o estágio de cada conteúdo:</p><div class="legend-list">
+<div class="legend-item"><span class="status-tag pending-tag">PENDENTE</span><p>Desenvolvimento ainda não iniciado.</p></div>
+<div class="legend-item"><span class="status-tag build-tag">EM CONSTRUÇÃO</span><p>Conteúdo em desenvolvimento.</p></div>
+<div class="legend-item"><span class="status-tag complete-tag">COMPLETO</span><p>Conteúdo finalizado e disponível.</p></div>
+</div></section>
 <div class="section-head"><h2>Linguagens</h2><p>CONTEÚDO DISPONÍVEL</p></div>
 <section class="card-grid">
 <article class="content-card under-construction" aria-label="Rust: conteúdo em construção"><div class="card-label">LINGUAGEM DE PROGRAMAÇÃO</div><div class="file-symbol" aria-hidden="true">🦀</div><h2>RUST<span>.</span></h2><p class="construction-status">EM CONSTRUÇÃO</p></article>
