@@ -31,6 +31,41 @@ footer{border-top:1px solid var(--border);padding:30px 20px;text-align:center;co
 @media(max-width:650px){.topbar{width:calc(100% - 30px);padding:18px 0;align-items:flex-start;flex-direction:column;gap:16px}nav{width:100%;justify-content:space-between;gap:8px;flex-wrap:wrap}nav a{font-size:10px}main{width:calc(100% - 30px);min-height:350px}}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
+
+    <script>
+    (() => {
+        const siteRoot = new URL('/zoth/', location.origin);
+        const versionUrl = new URL('version.json', siteRoot);
+        versionUrl.searchParams.set('_', Date.now().toString());
+
+        fetch(versionUrl, { cache: 'no-store' })
+            .then(response => {
+                if (!response.ok) throw new Error('Versão indisponível');
+                return response.json();
+            })
+            .then(({ version }) => {
+                if (!version) return;
+                const currentUrl = new URL(location.href);
+                if (currentUrl.searchParams.get('zoth_build') !== version) {
+                    currentUrl.searchParams.set('zoth_build', version);
+                    location.replace(currentUrl.href);
+                    return;
+                }
+
+                document.addEventListener('DOMContentLoaded', () => {
+                    document.querySelectorAll('img[src]').forEach(img => {
+                        const imageUrl = new URL(img.getAttribute('src'), document.baseURI);
+                        if (imageUrl.origin === location.origin && imageUrl.pathname.startsWith(siteRoot.pathname + 'assets/')) {
+                            imageUrl.searchParams.set('v', version);
+                            img.src = imageUrl.href;
+                        }
+                    });
+                }, { once: true });
+            })
+            .catch(error => console.warn('[ZOTH] Não foi possível verificar a versão:', error));
+    })();
+    </script>
+
 </head>
 <body>
 <header class="topbar">
