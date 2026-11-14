@@ -34,7 +34,42 @@ footer{padding:25px 20px;border-top:1px solid #1b1b1b;color:#444;text-align:cent
 @keyframes pageIn{to{opacity:1}}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @media(max-width:650px){.site-preview{width:calc(100% + 42px);margin:-21px -21px 18px}.topbar{width:calc(100% - 30px);height:auto;min-height:70px;align-items:flex-start;padding:20px 0 14px;flex-direction:column;gap:16px}nav{width:100%;justify-content:space-between;gap:10px}nav a{font-size:11px}main{width:calc(100% - 30px);margin-top:38px}.panel-body{padding:21px}.section-head{align-items:flex-start;flex-direction:column}}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-</style></head><body>
+</style>
+    <script>
+    (() => {
+        const siteRoot = new URL('/zoth/', location.origin);
+        const versionUrl = new URL('version.json', siteRoot);
+        versionUrl.searchParams.set('_', Date.now().toString());
+
+        fetch(versionUrl, { cache: 'no-store' })
+            .then(response => {
+                if (!response.ok) throw new Error('Versão indisponível');
+                return response.json();
+            })
+            .then(({ version }) => {
+                if (!version) return;
+                const currentUrl = new URL(location.href);
+                if (currentUrl.searchParams.get('zoth_build') !== version) {
+                    currentUrl.searchParams.set('zoth_build', version);
+                    location.replace(currentUrl.href);
+                    return;
+                }
+
+                document.addEventListener('DOMContentLoaded', () => {
+                    document.querySelectorAll('img[src]').forEach(img => {
+                        const imageUrl = new URL(img.getAttribute('src'), document.baseURI);
+                        if (imageUrl.origin === location.origin && imageUrl.pathname.startsWith(siteRoot.pathname + 'assets/')) {
+                            imageUrl.searchParams.set('v', version);
+                            img.src = imageUrl.href;
+                        }
+                    });
+                }, { once: true });
+            })
+            .catch(error => console.warn('[ZOTH] Não foi possível verificar a versão:', error));
+    })();
+    </script>
+
+</head><body>
 <header class="topbar"><a class="brand" href="index.html">ZOTH<span>.</span></a><nav aria-label="Navegação principal"><a href="index.html">Início</a><a href="projetos.html" class="active">Projetos</a><a href="apoiadores.html">Apoiadores</a><a href="blog.html">Blog</a><a href="rsz.html">RSZ</a><a href="aulas.html">Aulas</a></nav></header>
 <main><section class="page-heading"><p class="eyebrow">DESENVOLVIMENTO / EXPERIMENTOS</p><h1>Projetos<span style="color:#d71920">.</span></h1><p class="intro">Ferramentas, aplicações e experiências desenvolvidas ao longo do caminho.</p></section>
 <section class="panel"><div class="panel-body">
