@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-
 <title>ZOTH</title>
 
 <style>
@@ -16,37 +15,70 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     min-height: 100vh;
     background: #080808;
     color: #f2f2f2;
     font-family: 'Space Grotesk', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
 }
-
-/* GRID DISCRETO */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
+    z-index: -1;
+
     background-image:
         linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+
     background-size: 70px 70px;
-    mask-image: radial-gradient(ellipse, black, transparent 75%);
+
+    mask-image: radial-gradient(ellipse, black, transparent 80%);
 }
 
-/* CONTEÚDO CENTRAL */
+/* NAVEGAÇÃO */
 
-main {
+nav {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    color: #777;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #d71920;
+}
+
+/* INÍCIO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+}
+
+.hero-content {
     animation: appear 1.5s ease both;
-    z-index: 1;
 }
 
 h1 {
@@ -68,29 +100,70 @@ h1 span {
     margin: 35px auto 25px;
 }
 
-p {
+.tagline {
     color: #777;
     font-size: 11px;
     letter-spacing: .18em;
     text-transform: uppercase;
 }
 
+/* SOBRE */
+
+.about {
+    min-height: 65vh;
+    padding: 100px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #1b1b1b;
+}
+
+.about-content {
+    width: min(650px, 100%);
+}
+
+.about h2 {
+    font-size: 13px;
+    font-weight: 400;
+    color: #d71920;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.about p {
+    color: #888;
+    font-size: 15px;
+    line-height: 2;
+}
+
+/* RODAPÉ */
+
+footer {
+    padding: 25px;
+    border-top: 1px solid #1b1b1b;
+    text-align: center;
+    color: #555;
+    font-size: 10px;
+    letter-spacing: .15em;
+}
+
 /* MÚSICA */
 
 .music-toggle {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 25px;
+    right: 25px;
     z-index: 5;
 
-    background: transparent;
+    background: #080808;
     border: 1px solid #292929;
     color: #888;
-
     padding: 12px 16px;
+
+    font-family: inherit;
     font-size: 10px;
     letter-spacing: .15em;
-
     cursor: pointer;
     transition: .3s;
 }
@@ -113,7 +186,6 @@ p {
         opacity: 0;
         transform: translateY(15px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -121,6 +193,11 @@ p {
 }
 
 @media(max-width: 500px) {
+    nav {
+        gap: 22px;
+        top: 28px;
+    }
+
     h1 {
         font-size: 58px;
         letter-spacing: .2em;
@@ -144,17 +221,37 @@ p {
 
 <body>
 
-<audio id="music" loop preload="none">
+<audio id="music" loop preload="auto">
     <source src="background.mp3" type="audio/mpeg">
 </audio>
 
-<main>
-    <h1>ZOTH<span>.</span></h1>
+<nav>
+    <a href="projetos.html">Projetos</a>
+    <a href="blog.html">Blog</a>
+</nav>
 
-    <div class="line"></div>
+<section class="hero">
+    <div class="hero-content">
+        <h1>ZOTH<span>.</span></h1>
+        <div class="line"></div>
+        <p class="tagline">Nothing to prove.</p>
+    </div>
+</section>
 
-    <p>Nothing to prove.</p>
-</main>
+<section class="about" id="sobre">
+    <div class="about-content">
+        <h2>Sobre:</h2>
+
+        <p>
+            Este espaço foi criado para...
+            <!-- Escreva aqui a explicação sobre o site. -->
+        </p>
+    </div>
+</section>
+
+<footer>
+    © <span id="year"></span> ZOTH
+</footer>
 
 <button class="music-toggle" id="musicButton">
     <span>▶</span> MUSIC
@@ -166,26 +263,55 @@ const button = document.getElementById("musicButton");
 
 music.volume = 0.2;
 
-button.addEventListener("click", async () => {
+function updateButton(playing) {
+    button.innerHTML = playing
+        ? "<span>Ⅱ</span> PAUSE"
+        : "<span>▶</span> MUSIC";
+
+    button.classList.toggle("playing", playing);
+}
+
+async function startMusic() {
+    try {
+        await music.play();
+        updateButton(true);
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+// Tentativa de reprodução automática.
+startMusic();
+
+// Alternativa caso o navegador bloqueie.
+function firstInteraction() {
+    if (music.paused) startMusic();
+
+    document.removeEventListener("click", firstInteraction);
+    document.removeEventListener("keydown", firstInteraction);
+}
+
+document.addEventListener("click", firstInteraction);
+document.addEventListener("keydown", firstInteraction);
+
+// Controle manual.
+button.addEventListener("click", async (event) => {
+    event.stopPropagation();
+
     if (music.paused) {
-        try {
-            await music.play();
-            button.innerHTML = "<span>Ⅱ</span> PAUSE";
-            button.classList.add("playing");
-        } catch (error) {
-            button.innerHTML = "<span>!</span> ERROR";
-        }
+        await startMusic();
     } else {
         music.pause();
-        button.innerHTML = "<span>▶</span> MUSIC";
-        button.classList.remove("playing");
+        updateButton(false);
     }
 });
 
-music.addEventListener("pause", () => {
-    button.innerHTML = "<span>▶</span> MUSIC";
-    button.classList.remove("playing");
-});
+music.addEventListener("pause", () => updateButton(false));
+music.addEventListener("play", () => updateButton(true));
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 </script>
 
 </body>
