@@ -29,9 +29,31 @@ footer{padding:25px 20px;border-top:1px solid #1b1b1b;color:#444;text-align:cent
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}body{opacity:1}}
 
 .rust-mark{display:inline-grid;place-items:center;width:64px;height:64px;margin-bottom:18px;border:1px solid #39231f;border-radius:16px;background:#171110;color:#CE422B;font-size:35px}
-.rust-card{display:block;margin-top:18px}.rust-card:hover{border-color:#CE422B;box-shadow:0 12px 35px #CE422B18}.rust-card .card-label{color:#CE422B}
 .topic-copy{color:#b5b5b5;font-size:14px;line-height:1.9;margin-top:15px}
+.presentation-card{display:block;margin:0 0 38px;border-color:#286342;background:linear-gradient(145deg,#101a14,#101010 65%);transition:transform .3s,border-color .3s,box-shadow .3s}
+.presentation-card:hover{transform:translateY(-4px);border-color:#55bd80;box-shadow:0 12px 35px #55bd8018}
+.presentation-card .card-label{color:#55bd80}
+.complete-status{display:inline-block;margin-top:17px;padding:6px 9px;border:1px solid #286342;border-radius:4px;color:#55bd80;font:10px 'Fira Code',monospace;letter-spacing:1px}
+.lesson-strip{display:grid;grid-template-columns:repeat(10,minmax(82px,1fr));gap:10px;overflow-x:auto;padding:2px 2px 12px}
+.lesson-card{min-height:112px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:14px 8px;border:1px solid #383838;border-radius:9px;background:linear-gradient(145deg,#171717,#101010);color:#888;filter:grayscale(1);cursor:default}
+.lesson-number{font:500 25px 'Fira Code',monospace;color:#999}
+.lesson-name{font:10px 'Fira Code',monospace;letter-spacing:1px;color:#888}
+.lesson-status{font:9px 'Fira Code',monospace;color:#777;letter-spacing:.5px}
+@media(max-width:900px){.lesson-strip{grid-template-columns:repeat(10,92px)}}
+
 </style></head><body><header class="topbar"><a class="brand" href="../../index.html">ZOTH<span>.</span></a><nav aria-label="Navegação principal"><a href="../../index.html">Início</a><a href="../../projetos.html">Projetos</a><a href="../../apoiadores.html">Apoiadores</a><a href="../../blog.html">Blog</a><a href="../../aulas.html" class="active">Aulas</a></nav></header>
 <main><section class="page-heading"><p class="eyebrow">LINGUAGEM DE PROGRAMAÇÃO</p><div class="rust-mark">🦀</div><h1>RUST<span style="color:#d71920">.</span></h1><p class="intro">Performance, controle e segurança. Um estudo dos fundamentos da linguagem e de seus mecanismos internos.</p></section>
-<section class="panel"><div class="panel-body"><div class="section-head" style="margin-top:0"><h2>Introdução</h2><p>FUNDAMENTOS</p></div><p class="topic-copy">Rust é uma linguagem de programação compilada, desenvolvida com foco em desempenho, segurança de memória e concorrência. Seu sistema de ownership permite controlar a utilização da memória sem depender de um coletor de lixo tradicional.</p><p class="topic-copy">Neste espaço vamos estudar os fundamentos da linguagem, compreender seu funcionamento e desenvolver aplicações práticas.</p></div></section>
-<div class="section-head"><h2>Material de estudo</h2><p>CONTEÚDO</p></div><a class="content-card rust-card" href="apresentacoes.html"><div class="card-label">MATERIAL INTRODUTÓRIO</div><h2>Apresentações <span style="color:#CE422B">→</span></h2><p>Conheça a linguagem, sua proposta, arquitetura e os conceitos fundamentais antes de começar a programar.</p></a></main><footer>ZOTH © 2026</footer></body></html>
+<a class="content-card presentation-card" href="apresentacoes.html" aria-label="Acessar apresentação de Rust, conteúdo completo"><div class="card-label">INTRODUÇÃO À LINGUAGEM</div><h2>APRESENTAÇÃO <span style="color:#55bd80">→</span></h2><p>Conheça a linguagem, sua proposta, arquitetura e os conceitos fundamentais antes de começar as aulas.</p><span class="complete-status">COMPLETO</span></a>
+<div class="section-head" style="margin-top:0"><h2>Sequência de aulas</h2><p>AULA 01 — AULA 10</p></div>
+<section class="lesson-strip" aria-label="Sequência de dez aulas pendentes">
+<article class="lesson-card" aria-label="Aula 1: pendente"><span class="lesson-number">01</span><span class="lesson-name">AULA 1</span><span class="lesson-status">PENDENTE</span></article>
+<article class="lesson-card" aria-label="Aula 2: pendente"><span class="lesson-number">02</span><span class="lesson-name">AULA 2</span><span class="lesson-status">PENDENTE</span></article>
+<article class="lesson-card" aria-label="Aula 3: pendente"><span class="lesson-number">03</span><span class="lesson-name">AULA 3</span><span class="lesson-status">PENDENTE</span></article>
+<article class="lesson-card" aria-label="Aula 4: pendente"><span class="lesson-number">04</span><span class="lesson-name">AULA 4</span><span class="lesson-status">PENDENTE</span></article>
+<article class="lesson-card" aria-label="Aula 5: pendente"><span class="lesson-number">05</span><span class="lesson-name">AULA 5</span><span class="lesson-status">PENDENTE</span></article>
+<article class="lesson-card" aria-label="Aula 6: pendente"><span class="lesson-number">06</span><span class="lesson-name">AULA 6</span><span class="lesson-status">PENDENTE</span></article>
+<article class="lesson-card" aria-label="Aula 7: pendente"><span class="lesson-number">07</span><span class="lesson-name">AULA 7</span><span class="lesson-status">PENDENTE</span></article>
+<article class="lesson-card" aria-label="Aula 8: pendente"><span class="lesson-number">08</span><span class="lesson-name">AULA 8</span><span class="lesson-status">PENDENTE</span></article>
+<article class="lesson-card" aria-label="Aula 9: pendente"><span class="lesson-number">09</span><span class="lesson-name">AULA 9</span><span class="lesson-status">PENDENTE</span></article>
+<article class="lesson-card" aria-label="Aula 10: pendente"><span class="lesson-number">10</span><span class="lesson-name">AULA 10</span><span class="lesson-status">PENDENTE</span></article>
+</section></main><footer>ZOTH © 2026</footer></body></html>
