@@ -47,17 +47,21 @@
         .empty h3{font-size:15px;font-weight:500}
         .empty p{margin-top:7px;color:#777;font-size:12px;line-height:1.7}
         .archive-section{margin-top:42px;padding-top:26px;border-top:1px solid #242424}
-        .archive-card{display:grid;grid-template-columns:76px minmax(0,1fr) auto;align-items:center;gap:18px;padding:20px;border:1px solid #303030;border-radius:9px;background:linear-gradient(110deg,#121212,#0b0b0b);text-decoration:none;transition:border-color .2s,background .2s}
+        .archive-card{display:grid;grid-template-columns:minmax(180px,260px) minmax(0,1fr) auto;align-items:stretch;gap:22px;padding:14px;border:1px solid #303030;border-radius:9px;background:linear-gradient(110deg,#121212,#0b0b0b);text-decoration:none;transition:border-color .2s,background .2s}
         .archive-card:hover{border-color:#666;background:#141414}
-        .archive-symbol{width:64px;height:64px;display:grid;place-items:center;border:1px solid #454545;border-radius:8px;color:#aaa;background:#101010}
-        .archive-symbol svg{width:34px;height:34px}
-        .archive-copy{min-width:0}
+        .archive-preview{min-height:148px;position:relative;display:grid;place-items:center;overflow:hidden;border:1px solid #343434;border-radius:6px;background:radial-gradient(ellipse at 50% 120%,#333 0,transparent 65%),linear-gradient(135deg,#1b1b1b,#080808 70%)}
+        .archive-preview::before{content:"ST";position:absolute;right:-8px;bottom:-42px;color:rgba(255,255,255,.055);font-size:130px;font-weight:700;letter-spacing:-12px}
+        .archive-preview::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 25px,rgba(255,255,255,.035) 26px 27px);pointer-events:none}
+        .archive-symbol{width:66px;height:66px;z-index:1;display:grid;place-items:center;border:1px solid #666;border-radius:50%;color:#ddd;background:rgba(8,8,8,.78);box-shadow:0 0 35px #000}
+        .archive-symbol svg{width:36px;height:36px}
+        .archive-preview-label{position:absolute;left:12px;bottom:10px;z-index:1;color:#aaa;font:9px 'Fira Code',monospace;letter-spacing:1.5px}
+        .archive-copy{min-width:0;align-self:center}
         .archive-status{display:inline-block;margin-bottom:7px;color:#999;font:9px 'Fira Code',monospace;letter-spacing:1.5px}
         .archive-copy h3{font-size:17px;font-weight:600;letter-spacing:.2px}
         .archive-handle{margin-top:4px;color:#777;font:11px 'Fira Code',monospace}
         .archive-copy p{max-width:720px;margin-top:10px;color:#999;font-size:12px;line-height:1.75}
         .archive-arrow{color:#777;font-size:18px}
-        @media(max-width:650px){.archive-card{grid-template-columns:52px minmax(0,1fr);gap:13px;padding:15px}.archive-symbol{width:48px;height:48px}.archive-symbol svg{width:27px;height:27px}.archive-arrow{display:none}.archive-copy h3{font-size:15px}}
+        @media(max-width:650px){.archive-card{grid-template-columns:1fr;gap:14px;padding:12px}.archive-preview{min-height:130px}.archive-symbol{width:58px;height:58px}.archive-symbol svg{width:31px;height:31px}.archive-arrow{display:none}.archive-copy h3{font-size:15px}}
         footer{width:min(1120px,calc(100% - 44px));margin:0 auto;padding:22px 0 30px;border-top:1px solid #222;color:#666;font:10px 'Fira Code',monospace;letter-spacing:1px;text-align:center}
         @keyframes pageIn{to{opacity:1}}
         @media(max-width:650px){
@@ -156,12 +160,15 @@
             </div>
 
             <a class="archive-card" href="https://www.youtube.com/@STELLBYTENETWORK" target="_blank" rel="noopener noreferrer" aria-label="Abrir canal Stellbyte Network no YouTube">
-                <div class="archive-symbol" aria-hidden="true">
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 14.5 14.5 11a8 8 0 0 0-11.3 11.3l7 7a8 8 0 0 0 11.3 0l3-3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-                        <path d="m30 33.5 3.5 3.5a8 8 0 0 0 11.3-11.3l-7-7a8 8 0 0 0-11.3 0l-3 3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-                        <path d="m17 31 14-14M19 20l-4 4m14 4 4-4" stroke="#f0f0f0" stroke-width="2.6" stroke-linecap="round"/>
-                    </svg>
+                <div class="archive-preview" aria-label="Prévia visual do canal Stellbyte Network">
+                    <div class="archive-symbol" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 14.5 14.5 11a8 8 0 0 0-11.3 11.3l7 7a8 8 0 0 0 11.3 0l3-3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                            <path d="m30 33.5 3.5 3.5a8 8 0 0 0 11.3-11.3l-7-7a8 8 0 0 0-11.3 0l-3 3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                            <path d="m17 31 14-14M19 20l-4 4m14 4 4-4" stroke="#f0f0f0" stroke-width="2.6" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span class="archive-preview-label">STELLBYTE NETWORK / CHANNEL</span>
                 </div>
                 <div class="archive-copy">
                     <span class="archive-status">◈ PROJETO ENCERRADO</span>
