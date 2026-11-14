@@ -290,6 +290,18 @@
             font-size: 12px;
             line-height: 1.7;
         }
+        .supporter-link {
+            display: inline-block;
+            margin-top: 16px;
+            color: #e6c400;
+            font: 11px 'Fira Code', monospace;
+            text-decoration: none;
+            transition: color .25s ease, text-shadow .25s ease;
+        }
+        .supporter-link:hover {
+            color: #fff0a3;
+            text-shadow: 0 0 12px rgba(230,196,0,.45);
+        }
         .feed h3 { font-size: 16px; font-weight: 500; }
         .feed p {
             max-width: 390px;
@@ -404,8 +416,8 @@
                 </div>
             </div>
             <div class="stats">
-                <div class="stat"><strong>01</strong><span>Apoiadores</span></div>
-                <div class="stat"><strong>00</strong><span>Parceiros</span></div>
+                <div class="stat"><strong>00</strong><span>Apoiadores</span></div>
+                <div class="stat"><strong>01</strong><span>Parceiros</span></div>
                 <div class="stat"><strong>∞</strong><span>Possibilidades</span></div>
             </div>
         </section>
@@ -414,15 +426,16 @@
             <h2>Apoiadores</h2>
             <p>QUEM FORTALECE O PROJETO</p>
         </div>
-        <section class="supporter-grid" aria-label="Lista de apoiadores">
+        <section class="supporter-grid" aria-label="Lista de parcerias">
             <article class="supporter-card">
                 <div class="supporter-avatar">
                     <img src="assets/zilentvoid.jpeg" alt="Foto de perfil de ZilentVoid"
                          onerror="this.remove(); this.parentElement.textContent = 'ZV';">
                 </div>
                 <h3>ZilentVoid</h3>
-                <p class="supporter-role">APOIADOR</p>
-                <p class="supporter-description">Apoiador do projeto ZOTH.</p>
+                <p class="supporter-role">PARCEIRO</p>
+                <p class="supporter-description">Parceria no projeto ZOTH.</p>
+                <a class="supporter-link" href="https://github.com/zilentvoid" target="_blank" rel="noopener noreferrer">github.com/zilentvoid ↗</a>
             </article>
         </section>
 
