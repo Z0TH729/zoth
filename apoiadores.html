@@ -254,6 +254,39 @@
             box-shadow: 0 12px 35px rgba(217,179,0,.10);
             border-color: #ffe45c;
         }
+        .partner-card {
+            border-color: #8f2429;
+            background: linear-gradient(145deg, rgba(215,25,32,.12), #111 52%);
+        }
+        .partner-card:hover {
+            box-shadow: 0 12px 35px rgba(215,25,32,.14);
+            border-color: #e0444b;
+        }
+        .partner-card::after { content: none; }
+        .partner-card .supporter-avatar {
+            border-color: #b92b32;
+            background: #1b0d0e;
+            box-shadow: 0 0 22px rgba(215,25,32,.16);
+        }
+        .profile-heading {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .profile-seal {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 9px;
+            border: 1px solid rgba(224,68,75,.55);
+            border-radius: 4px;
+            background: rgba(215,25,32,.12);
+            color: #f06a70;
+            font: 9px 'Fira Code', monospace;
+            letter-spacing: 1px;
+        }
+        .profile-seal span { color: #ff858a; font-size: 11px; }
         .supporter-card::after {
             content: "APOIADOR";
             position: absolute;
@@ -435,13 +468,15 @@
             <p>IDEIAS QUE SE ENCONTRAM</p>
         </div>
         <section class="supporter-grid" aria-label="Lista de parceiros">
-            <article class="supporter-card">
+            <article class="supporter-card partner-card">
                 <div class="supporter-avatar">
                     <img src="assets/zilentvoid.jpeg" alt="Foto de perfil de ZilentVoid"
                          onerror="this.remove(); this.parentElement.textContent = 'ZV';">
                 </div>
-                <h3>ZilentVoid</h3>
-                <p class="supporter-role">PARCEIRO</p>
+                <div class="profile-heading">
+                    <h3>ZilentVoid</h3>
+                    <span class="profile-seal"><span aria-hidden="true">✦</span> PARCEIRO</span>
+                </div>
                 <p class="supporter-description">Parceria no projeto ZOTH.</p>
                 <a class="supporter-link" href="https://github.com/zilentvoid" target="_blank" rel="noopener noreferrer">github.com/zilentvoid ↗</a>
             </article>
