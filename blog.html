@@ -1,73 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZOTH — Blog</title>
-
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#080808"><title>Blog | ZOTH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: #080808;
-    color: #f2f2f2;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    padding: 35px;
-}
-
-a {
-    color: #777;
-    text-decoration: none;
-    font-size: 12px;
-}
-
-a:hover {
-    color: #d71920;
-}
-
-main {
-    max-width: 800px;
-    margin: 150px auto;
-}
-
-h1 {
-    font-size: clamp(45px, 9vw, 85px);
-    letter-spacing: .12em;
-}
-
-h1 span {
-    color: #d71920;
-}
-
-p {
-    color: #777;
-    margin-top: 25px;
-    font-size: 14px;
-}
-
-.line {
-    width: 40px;
-    height: 2px;
-    background: #d71920;
-    margin-top: 30px;
-}
-</style>
-</head>
-
-<body>
-
-<a href="index.html">← VOLTAR</a>
-
-<main>
-    <h1>BLOG<span>.</span></h1>
-    <div class="line"></div>
-    <p>Nenhuma publicação por enquanto.</p>
-</main>
-
-</body>
-</html>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{min-height:100vh;overflow-x:hidden;background:#080808;color:#f2f2f2;font-family:'Space Grotesk',sans-serif;opacity:0;animation:pageIn .7s ease forwards}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:52px 52px}
+a{color:inherit;text-decoration:none}
+.topbar{width:min(1100px,calc(100% - 40px));height:76px;margin:auto;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #202020}
+.brand{color:#f2f2f2;font-size:21px;font-weight:700;letter-spacing:5px}.brand span{color:#d71920}
+nav{display:flex;align-items:center;gap:25px}nav a{color:#777;font-size:12px;transition:color .25s}nav a:hover,nav a.active{color:#f2f2f2}nav a.active::after{content:"";display:block;width:100%;height:2px;margin-top:7px;background:#d71920}
+main{width:min(1000px,calc(100% - 40px));margin:55px auto 100px}
+.page-heading{margin-bottom:28px;animation:rise .7s both}.eyebrow{color:#d71920;font:11px 'Fira Code',monospace;letter-spacing:3px;margin-bottom:12px}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.05;font-weight:600}.intro{max-width:590px;margin-top:14px;color:#858585;font-size:14px;line-height:1.8}
+.panel{overflow:hidden;border:1px solid #292929;border-radius:12px;background:#101010;animation:rise .8s .12s both}
+.panel-body{padding:28px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:38px 0 18px}
+.section-head h2{font-size:19px;font-weight:500}.section-head p{color:#666;font:10px 'Fira Code',monospace}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.content-card{position:relative;overflow:hidden;padding:24px;border:1px solid #292929;border-radius:12px;background:linear-gradient(145deg,#171717,#101010 65%);transition:transform .3s,border-color .3s,box-shadow .3s}
+.content-card:hover{transform:translateY(-5px);border-color:#d71920;box-shadow:0 12px 35px rgba(215,25,32,.09)}
+.content-card h2,.content-card h3{font-size:19px;font-weight:600}.content-card p{margin-top:10px;color:#858585;font-size:13px;line-height:1.75}
+.card-label{margin-bottom:12px;color:#d71920;font:10px 'Fira Code',monospace;letter-spacing:2px}
+.empty-state{min-height:210px;display:grid;place-items:center;padding:35px 20px;border:1px dashed #333;border-radius:10px;background:rgba(15,15,15,.72);text-align:center}
+.empty-icon{width:54px;height:54px;margin:0 auto 17px;display:grid;place-items:center;border:1px solid #3a2021;border-radius:50%;color:#d71920;font-size:22px;animation:float 3s ease-in-out infinite}
+.empty-state h2{font-size:16px;font-weight:500}.empty-state p{max-width:390px;margin-top:8px;color:#777;font-size:12px;line-height:1.7}
+footer{padding:25px 20px;border-top:1px solid #1b1b1b;color:#444;text-align:center;font:10px 'Fira Code',monospace;letter-spacing:2px}
+@keyframes pageIn{to{opacity:1}}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media(max-width:650px){.topbar{width:calc(100% - 30px);height:auto;min-height:70px;align-items:flex-start;padding:20px 0 14px;flex-direction:column;gap:16px}nav{width:100%;justify-content:space-between;gap:10px}nav a{font-size:11px}main{width:calc(100% - 30px);margin-top:38px}.panel-body{padding:21px}.section-head{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}body{opacity:1}}
+</style></head><body>
+<header class="topbar"><a class="brand" href="index.html">ZOTH<span>.</span></a><nav aria-label="Navegação principal"><a href="index.html">Início</a><a href="projetos.html" >Projetos</a><a href="apoiadores.html">Apoiadores</a><a href="blog.html" class="active">Blog</a><a href="aulas.html" >Aulas</a></nav></header>
+<main><section class="page-heading"><p class="eyebrow">ANOTAÇÕES / PUBLICAÇÕES</p><h1>Blog<span style="color:#d71920">.</span></h1><p class="intro">Ideias, registros técnicos, descobertas e assuntos que merecem ser documentados.</p></section>
+<section class="panel"><div class="panel-body"><div class="empty-state"><div><div class="empty-icon">⌁</div><h2>Nenhuma publicação por enquanto.</h2><p>Os artigos e registros serão apresentados aqui conforme forem publicados.</p></div></div></div></section></main><footer>ZOTH © 2026</footer></body></html>
