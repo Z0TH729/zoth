@@ -41,7 +41,42 @@ footer{padding:25px 20px;border-top:1px solid #1b1b1b;color:#444;text-align:cent
 .lesson-status{font:9px 'Fira Code',monospace;color:#777;letter-spacing:.5px}
 @media(max-width:900px){.lesson-strip{grid-template-columns:repeat(10,92px)}}
 
-</style></head><body><header class="topbar"><a class="brand" href="../../index.html">ZOTH<span>.</span></a><nav aria-label="Navegação principal"><a href="../../index.html">Início</a><a href="../../projetos.html">Projetos</a><a href="../../apoiadores.html">Apoiadores</a><a href="../../blog.html">Blog</a><a href="../../rsz.html">RSZ</a><a href="../../aulas.html" class="active">Aulas</a></nav></header>
+</style>
+    <script>
+    (() => {
+        const siteRoot = new URL('/zoth/', location.origin);
+        const versionUrl = new URL('version.json', siteRoot);
+        versionUrl.searchParams.set('_', Date.now().toString());
+
+        fetch(versionUrl, { cache: 'no-store' })
+            .then(response => {
+                if (!response.ok) throw new Error('Versão indisponível');
+                return response.json();
+            })
+            .then(({ version }) => {
+                if (!version) return;
+                const currentUrl = new URL(location.href);
+                if (currentUrl.searchParams.get('zoth_build') !== version) {
+                    currentUrl.searchParams.set('zoth_build', version);
+                    location.replace(currentUrl.href);
+                    return;
+                }
+
+                document.addEventListener('DOMContentLoaded', () => {
+                    document.querySelectorAll('img[src]').forEach(img => {
+                        const imageUrl = new URL(img.getAttribute('src'), document.baseURI);
+                        if (imageUrl.origin === location.origin && imageUrl.pathname.startsWith(siteRoot.pathname + 'assets/')) {
+                            imageUrl.searchParams.set('v', version);
+                            img.src = imageUrl.href;
+                        }
+                    });
+                }, { once: true });
+            })
+            .catch(error => console.warn('[ZOTH] Não foi possível verificar a versão:', error));
+    })();
+    </script>
+
+</head><body><header class="topbar"><a class="brand" href="../../index.html">ZOTH<span>.</span></a><nav aria-label="Navegação principal"><a href="../../index.html">Início</a><a href="../../projetos.html">Projetos</a><a href="../../apoiadores.html">Apoiadores</a><a href="../../blog.html">Blog</a><a href="../../rsz.html">RSZ</a><a href="../../aulas.html" class="active">Aulas</a></nav></header>
 <main><section class="page-heading"><p class="eyebrow">LINGUAGEM DE PROGRAMAÇÃO</p><div class="rust-mark">🦀</div><h1>RUST<span style="color:#d71920">.</span></h1><p class="intro">Performance, controle e segurança. Um estudo dos fundamentos da linguagem e de seus mecanismos internos.</p></section>
 <a class="content-card presentation-card" href="apresentacoes.html" aria-label="Acessar apresentação de Rust, conteúdo completo"><div class="card-label">INTRODUÇÃO À LINGUAGEM</div><h2>APRESENTAÇÃO <span style="color:#CE422B">→</span></h2><p>Conheça a linguagem, sua proposta, arquitetura e os conceitos fundamentais antes de começar as aulas.</p><span class="complete-status">COMPLETO</span></a>
 <div class="section-head" style="margin-top:0"><h2>Sequência de aulas</h2><p>AULA 01 — AULA 10</p></div>
