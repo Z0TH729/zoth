@@ -308,19 +308,7 @@
             .terminal-body { padding: 18px 15px; font-size: 11px; }
             .terminal-title { font-size: 10px; }
         }
-        @media (prefers-reduced-motion: reduce) {
-            .boot-screen { display: none; animation: none; }
-
-            *, *::before, *::after {
-                animation-duration: .01ms !important;
-                animation-delay: 0ms !important;
-                scroll-behavior: auto !important;
-                transition-duration: .01ms !important;
-            }
-            body, .hero h1, .hero p { opacity: 1; }
-            .line { transform: scaleX(1); }
-            .terminal { opacity: 1; transform: none; }
-        }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     </style>
 </head>
 
