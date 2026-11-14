@@ -1,5 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="10" fill="#080808"/>
-  <path d="M15 13h34v8H36v30h-8V21H15z" fill="#f2f2f2"/>
-  <path d="M43 13h8v8h-8z" fill="#d71920"/>
+  <defs>
+    <linearGradient id="disk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".28" stop-color="#e31b2b"/>
+      <stop offset=".72" stop-color="#a90016"/>
+      <stop offset="1" stop-color="#360008"/>
+    </linearGradient>
+    <radialGradient id="core">
+      <stop offset=".68" stop-color="#000"/>
+      <stop offset=".84" stop-color="#090909"/>
+      <stop offset="1" stop-color="#1b1b1b"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="#080808"/>
+  <ellipse cx="32" cy="32" rx="26" ry="11" transform="rotate(-28 32 32)"
+    fill="none" stroke="#52000c" stroke-width="8"/>
+  <ellipse cx="32" cy="32" rx="26" ry="11" transform="rotate(-28 32 32)"
+    fill="none" stroke="url(#disk)" stroke-width="4.5"/>
+  <circle cx="32" cy="32" r="14.5" fill="#050505" stroke="#f1f1f1" stroke-width="1.6"/>
+  <circle cx="32" cy="32" r="12.2" fill="url(#core)"/>
+  <path d="M8 42c7 8 20 10 31 5" fill="none" stroke="#e31b2b" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M56 22c-6-8-17-11-27-8" fill="none" stroke="#fff" stroke-opacity=".9" stroke-width="1.5" stroke-linecap="round"/>
 </svg>
