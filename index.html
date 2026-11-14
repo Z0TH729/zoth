@@ -33,23 +33,12 @@
             pointer-events: none;
             z-index: -1;
         }
-        nav {
-            position: absolute;
-            top: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 35px;
-            z-index: 10;
-        }
-        nav a {
-            color: #777;
-            text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 1px;
-            transition: color .3s;
-        }
-        nav a:hover { color: #d71920; }
+        nav { display:flex; align-items:center; gap:25px; }
+        nav a { color:#777; text-decoration:none; font-size:12px; transition:color .25s ease; }
+        nav a:hover { color:#f2f2f2; }
+        .topbar { width:min(1100px,calc(100% - 40px)); height:76px; margin:auto; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #202020; }
+        .brand { color:#f2f2f2; text-decoration:none; font-size:21px; font-weight:700; letter-spacing:5px; }
+        .brand span { color:#d71920; }
         .hero {
             min-height: 100vh;
             display: flex;
@@ -87,13 +76,17 @@
 
         /* Apresentação */
         .about {
-            min-height: 65vh;
-            padding: 100px 24px 110px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-top: 1px solid #181818;
+            width:min(1000px,calc(100% - 40px));
+            min-height:65vh;
+            margin:55px auto 85px;
+            padding:34px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            border:1px solid #292929;
+            border-radius:12px;
+            background:#101010;
         }
         .section-label {
             color: #d71920;
@@ -224,9 +217,9 @@
         @keyframes blink { to { visibility: hidden; } }
 
         @media (max-width: 600px) {
-            nav { gap: 22px; top: 25px; }
-            nav a { font-size: 11px; }
-            .about { padding: 80px 18px; }
+             .topbar { width:calc(100% - 30px); height:auto; min-height:70px; align-items:flex-start; padding:20px 0 14px; flex-direction:column; gap:16px; } nav { width:100%; justify-content:space-between; gap:10px; }
+            nav a { font-size:11px; }
+            .about { width:calc(100% - 30px); margin:38px auto 55px; padding:24px 18px; }
             .profile {
                 grid-template-columns: 1fr;
                 justify-items: center;
@@ -253,12 +246,7 @@
 </head>
 
 <body>
-    <nav aria-label="Navegação principal">
-        <a href="projetos.html">Projetos</a>
-        <a href="apoiadores.html">Apoiadores</a>
-        <a href="blog.html">Blog</a>
-        <a href="aulas.html">Aulas</a>
-    </nav>
+    <header class="topbar"><a class="brand" href="index.html">ZOTH<span>.</span></a><nav aria-label="Navegação principal"><a href="projetos.html">Projetos</a><a href="apoiadores.html">Apoiadores</a><a href="blog.html">Blog</a><a href="aulas.html">Aulas</a></nav></header>
 
     <main>
         <section class="hero">
