@@ -22,6 +22,21 @@ h1{font-size:clamp(34px,6vw,58px);line-height:1.05;font-weight:600}.intro{max-wi
 .content-card h2,.content-card h3{font-size:19px;font-weight:600}.content-card p{margin-top:10px;color:#858585;font-size:13px;line-height:1.75}
 .card-label{margin-bottom:12px;color:#d71920;font:10px 'Fira Code',monospace;letter-spacing:2px}
 .empty-state{min-height:210px;display:grid;place-items:center;padding:35px 20px;border:1px dashed #333;border-radius:10px;background:rgba(15,15,15,.72);text-align:center}
+.feed{display:grid;gap:16px}
+.post-card{overflow:hidden;border:1px solid #292929;border-radius:12px;background:#101010;animation:rise .8s .12s both;transition:border-color .25s}
+.post-card:hover{border-color:#454545}
+.post-header{display:flex;align-items:center;gap:12px;padding:19px 22px;border-bottom:1px solid #202020}
+.post-avatar{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;border:1px solid #5a2023;border-radius:50%;background:#191010;color:#f2f2f2;font-weight:700}
+.post-meta{display:flex;flex-direction:column;gap:3px}
+.post-meta strong{font-size:13px;font-weight:600}
+.post-meta span{color:#686868;font:10px 'Fira Code',monospace}
+.post-menu{margin-left:auto;color:#777;font-size:23px;letter-spacing:2px;line-height:1}
+.post-content{padding:22px}
+.post-content p{margin-bottom:17px;color:#ededed;font-size:16px;line-height:1.6}
+.post-image{display:block;width:100%;max-height:620px;object-fit:contain;border:1px solid #292929;border-radius:9px;background:#080808}
+.post-actions{display:flex;justify-content:space-between;gap:12px;padding:14px 22px;border-top:1px solid #202020;color:#626262;font:9px 'Fira Code',monospace;letter-spacing:1px}
+@media(max-width:500px){.post-header{padding:16px}.post-content{padding:16px}.post-actions{padding:12px 16px;font-size:8px}}
+
 .empty-icon{width:54px;height:54px;margin:0 auto 17px;display:grid;place-items:center;border:1px solid #3a2021;border-radius:50%;color:#d71920;font-size:22px;animation:float 3s ease-in-out infinite}
 .empty-state h2{font-size:16px;font-weight:500}.empty-state p{max-width:390px;margin-top:8px;color:#777;font-size:12px;line-height:1.7}
 footer{padding:25px 20px;border-top:1px solid #1b1b1b;color:#444;text-align:center;font:10px 'Fira Code',monospace;letter-spacing:2px}
@@ -31,4 +46,20 @@ footer{padding:25px 20px;border-top:1px solid #1b1b1b;color:#444;text-align:cent
 </style></head><body>
 <header class="topbar"><a class="brand" href="index.html">ZOTH<span>.</span></a><nav aria-label="Navegação principal"><a href="index.html">Início</a><a href="projetos.html">Projetos</a><a href="apoiadores.html">Apoiadores</a><a href="blog.html" class="active">Blog</a><a href="aulas.html">Aulas</a></nav></header>
 <main><section class="page-heading"><p class="eyebrow">ANOTAÇÕES / PUBLICAÇÕES</p><h1>Blog<span style="color:#d71920">.</span></h1><p class="intro">Ideias, registros técnicos, descobertas e assuntos que merecem ser documentados.</p></section>
-<section class="panel"><div class="panel-body"><div class="empty-state"><div><div class="empty-icon">⌁</div><h2>Nenhuma publicação por enquanto.</h2><p>Os artigos e registros serão apresentados aqui conforme forem publicados.</p></div></div></div></section></main><footer>ZOTH © 2026</footer></body></html>
+<section class="feed" aria-label="Publicações">
+<article class="post-card">
+  <header class="post-header">
+    <div class="post-avatar" aria-hidden="true">Z</div>
+    <div class="post-meta">
+      <strong>zoth</strong>
+      <span>14/11/2026 às 07:13:40</span>
+    </div>
+    <span class="post-menu" aria-hidden="true">···</span>
+  </header>
+  <div class="post-content">
+    <p>acordado desde madrugada</p>
+    <img class="post-image" src="assets/postblog1.jpeg" alt="Imagem da publicação: acordado desde madrugada" loading="lazy">
+  </div>
+  <footer class="post-actions"><span>PUBLICAÇÃO PESSOAL</span><span> ZOTH / BLOG</span></footer>
+</article>
+</section></main><footer>ZOTH © 2026</footer></body></html>
